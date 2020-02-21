@@ -15,10 +15,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.huangshan.admin.activity.ActivityCollector;
-import com.example.huangshan.admin.activity.BaseActivity;
-
-import com.example.huangshan.admin.bean.Admin;
+import com.example.huangshan.admin.activity.AdminMainActivity;
 import com.example.huangshan.view.CustomVideoView;
 import com.example.huangshan.R;
 
@@ -54,9 +51,8 @@ public class LoginActivity extends BaseActivity {
         //这时候就不会经过Login界面，而是直接进入Main界面
         if (role != null && role.equals("admin")){
             Log.d(TAG,"进入管理员界面");
-//            Intent intent = new Intent(this, MainActivity.class);
-//            intent.putExtras(bundle);
-//            startActivity(intent);
+            Intent intent = new Intent(this, AdminMainActivity.class);
+            startActivity(intent);
         } else if (role != null && role.equals("tourist")){
             Log.d(TAG,"进入游客界面");
         } else{
@@ -70,10 +66,6 @@ public class LoginActivity extends BaseActivity {
             //初始化背景视频
             initVideoView();
         }
-
-
-
-
     }
 
     private void initVideoView(){

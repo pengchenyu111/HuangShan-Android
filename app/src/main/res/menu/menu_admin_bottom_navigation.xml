@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/admin_tab_showdata"
+        android:icon="@mipmap/chart_normal"
+        android:title="数据" />
+
+    <item
+        android:id="@+id/admin_tab_predict"
+        android:icon="@mipmap/predict_normal"
+        android:title="预测" />
+
+    <item
+        android:id="@+id/admin_tab_notification"
+        android:icon="@mipmap/notification_normal"
+        android:title="通知" />
+
+    <item
+        android:id="@+id/admin_tab_accountmanage"
+        android:icon="@mipmap/profile_normal"
+        android:title="账户" />
+</menu>

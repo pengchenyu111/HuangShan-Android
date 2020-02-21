@@ -85,6 +85,17 @@ public class ShowDataFragment extends Fragment implements View.OnClickListener, 
         // Required empty public constructor
     }
 
+    /**
+     * 加载一次，避免内存消耗
+     * @return
+     */
+    public static ShowDataFragment newInstance() {
+        Bundle args = new Bundle();
+        ShowDataFragment fragment = new ShowDataFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

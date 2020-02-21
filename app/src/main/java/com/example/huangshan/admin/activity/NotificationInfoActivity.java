@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import com.example.huangshan.R;
 import com.example.huangshan.admin.bean.Notification;
+import com.example.huangshan.common.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

@@ -9,7 +9,7 @@ import com.amap.api.maps.AMap;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 import com.example.huangshan.R;
-import com.example.huangshan.admin.activity.BaseApplication;
+import com.example.huangshan.common.BaseApplication;
 
 
 /**
