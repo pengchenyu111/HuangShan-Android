@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.WeatherH5Activity">
+    tools:context=".admin.activity.WeatherH5Activity">
 
     <WebView
         android:id="@+id/weather_webview"

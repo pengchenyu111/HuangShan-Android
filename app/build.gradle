@@ -30,6 +30,13 @@ android {
     sourceSets {
         main {
             jniLibs.srcDirs = ['libs']
+            res.srcDirs =
+                [
+                    'src/main/res/layout/admin',
+                    'src/main/res/layout/tourist',
+                    'src/main/res/layout/common',
+                    'src/main/res'
+                ]
         }
     }
 }
@@ -51,6 +58,13 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.6'
     //    网络通信工具
     implementation 'com.squareup.okhttp3:okhttp:4.1.0'
+    //     Retrofit+RxJava
+    implementation 'com.squareup.retrofit2:retrofit:2.7.1'
+    implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.7.1'
+    //     rxjava2
+    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.5'
     //    图片圆形化工具
     implementation 'de.hdodenhof:circleimageview:3.0.0'
     //    design support 库

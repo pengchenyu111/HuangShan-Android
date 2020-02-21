@@ -2,7 +2,7 @@ package com.example.huangshan.utils;
 
 import android.os.Build;
 
-import com.example.huangshan.Constant;
+import com.example.huangshan.constans.Constant;
 
 import org.jetbrains.annotations.NotNull;
 

@@ -6,6 +6,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:id="@+id/admin_self_info_container"
-    tools:context=".activity.AdminSelfInfoActivity">
+    tools:context=".admin.activity.AdminSelfInfoActivity">
 
 </FrameLayout>

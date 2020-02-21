@@ -3,39 +3,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.huangshan">
 
-    <uses-permission android:name="android.permission.FLASHLIGHT" />
-    <uses-permission android:name="android.permission.VIBRATE" /> <!-- 网络访问权限 -->
-    <uses-permission android:name="android.permission.INTERNET" /> <!-- 允许程序设置内置sd卡的写权限 -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 允许程序设置内置sd卡的读权限 -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 允许程序获取网络状态 -->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 允许程序访问WiFi网络信息 -->
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
-    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 允许程序读写手机状态和身份 -->
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 允许程序访问CellID或WiFi热点来获取粗略的位置 -->
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 允许访问GPS定位 -->
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 用于申请调用A-GPS模块 -->
-    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" /> <!-- 用于申请获取蓝牙信息进行室内定位 -->
-    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.FLASHLIGHT" /> <!--通知灯权限-->
+    <uses-permission android:name="android.permission.VIBRATE" /> <!--振动权限-->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 网络访问权限 -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 允许程序设置内置sd卡的写权限 -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 允许程序设置内置sd卡的读权限 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> <!-- 允许程序获取网络状态 -->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" /> <!-- 允许程序访问WiFi网络信息 -->
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" /> <!-- 用于获取wifi的获取权限，wifi信息会用来进行网络定位 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" /> <!-- 允许程序读写手机状态和身份 -->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 允许程序访问CellID或WiFi热点来获取粗略的位置 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 允许访问GPS定位 -->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" /> <!-- 用于申请调用A-GPS模块 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" /><!-- 用于申请获取蓝牙信息进行室内定位 -->
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
-        android:name=".activity.BaseApplication"
+        android:name=".admin.activity.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/app_icon"
-        android:label="黄山"
+        android:label="黄山任我行"
         android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon,android:theme,android:allowBackup,android:label,android:supportsRtl">
-        <activity android:name=".activity.NotificationInfoActivity"></activity>
-        <activity android:name=".activity.WeatherH5Activity" />
-        <activity android:name=".activity.SendNotificationActivity" />
-        <activity android:name=".activity.AdminSelfInfoActivity" />
-        <activity android:name=".activity.UserFeedbackManageActivity" />
-        <activity android:name=".activity.NotificationManageActivity" />
+        <activity android:name=".admin.activity.NotificationInfoActivity"></activity>
+        <activity android:name=".admin.activity.WeatherH5Activity" />
+        <activity android:name=".admin.activity.SendNotificationActivity" />
+        <activity android:name=".admin.activity.AdminSelfInfoActivity" />
+        <activity android:name=".admin.activity.UserFeedbackManageActivity" />
+        <activity android:name=".admin.activity.NotificationManageActivity" />
         <activity
-            android:name=".activity.SplashActivity"
+            android:name=".common.SplashActivity"
             android:theme="@style/SplashActivityTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,12 +43,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.SettingsActivity" />
-        <activity android:name=".activity.AboutActivity" />
-        <activity android:name=".activity.ListAdminsActivity" />
-        <activity android:name=".activity.AdminInformationActivity" />
-        <activity android:name=".activity.UsersManageActivity" />
-        <activity android:name=".activity.AdminsMapViewActivity" />
+        <activity android:name=".admin.activity.SettingsActivity" />
+        <activity android:name=".admin.activity.AboutActivity" />
+        <activity android:name=".admin.activity.ListAdminsActivity" />
+        <activity android:name=".admin.activity.AdminInformationActivity" />
+        <activity android:name=".admin.activity.UsersManageActivity" />
+        <activity android:name=".admin.activity.AdminsMapViewActivity" />
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
@@ -56,10 +56,10 @@
 
         <service android:name="com.amap.api.location.APSService" />
 
-        <activity android:name=".activity.WeatherActivity" />
-        <activity android:name=".activity.BaseActivity" />
-        <activity android:name=".activity.LoginActivity" android:launchMode="singleTask" />
-        <activity android:name=".activity.MainActivity" />
+        <activity android:name=".admin.activity.WeatherActivity" />
+        <activity android:name=".admin.activity.BaseActivity" />
+        <activity android:name=".common.LoginActivity" android:launchMode="singleTask" />
+        <activity android:name=".admin.activity.MainActivity" />
     </application>
 
 </manifest>

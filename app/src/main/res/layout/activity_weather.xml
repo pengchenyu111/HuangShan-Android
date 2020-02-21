@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary"
-    tools:context=".activity.WeatherActivity">
+    tools:context=".admin.activity.WeatherActivity">
 
   <ImageView
       android:id="@+id/weather_bcg_pic"
