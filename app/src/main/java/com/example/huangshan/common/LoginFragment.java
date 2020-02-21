@@ -2,6 +2,7 @@ package com.example.huangshan.common;
 
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
@@ -16,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
+import com.example.huangshan.admin.activity.AdminMainActivity;
 import com.example.huangshan.admin.bean.Tourist;
 import com.example.huangshan.admin.bean.Admin;
 import com.example.huangshan.constans.ResultCode;
@@ -125,11 +127,15 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
                                            Admin admin = gson.fromJson(data,Admin.class);
                                            //写入缓存
                                            adminSharePreferences(admin);
+                                           //登录
+                                           Intent intent = new Intent(getActivity(), AdminMainActivity.class);
+                                           startActivity(intent);
                                            Toast.makeText(getActivity(),"管理员您好，欢迎登录！",Toast.LENGTH_SHORT).show();
                                        }else {
                                            Tourist tourist = gson.fromJson(data,Tourist.class);
                                            //写入缓存
                                            touristSharePreferences(tourist);
+                                           //登录
                                            Toast.makeText(getActivity(),"游客您好，欢迎登录！",Toast.LENGTH_SHORT).show();
                                        }
                                    }

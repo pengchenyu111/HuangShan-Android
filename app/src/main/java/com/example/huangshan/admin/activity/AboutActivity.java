@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.huangshan.R;
+import com.example.huangshan.common.BaseActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

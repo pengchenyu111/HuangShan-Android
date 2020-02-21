@@ -8,7 +8,6 @@ import android.view.View;
 
 
 import com.example.huangshan.R;
-import com.example.huangshan.admin.activity.BaseActivity;
 
 /**
  * 刚刚进入app时的界面

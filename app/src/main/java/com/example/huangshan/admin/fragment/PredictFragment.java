@@ -37,6 +37,17 @@ public class PredictFragment extends Fragment implements View.OnClickListener{
         // Required empty public constructor
     }
 
+    /**
+     * 加载一次，避免内存消耗
+     * @return
+     */
+    public static PredictFragment newInstance() {
+        Bundle args = new Bundle();
+        PredictFragment fragment = new PredictFragment();
+        fragment.setArguments(args);
+        return fragment;
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

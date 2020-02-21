@@ -19,7 +19,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
-        android:name=".admin.activity.BaseApplication"
+        android:name=".common.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/app_icon"
         android:label="黄山任我行"
@@ -57,9 +57,9 @@
         <service android:name="com.amap.api.location.APSService" />
 
         <activity android:name=".admin.activity.WeatherActivity" />
-        <activity android:name=".admin.activity.BaseActivity" />
-        <activity android:name=".common.LoginActivity" android:launchMode="singleTask" />
-        <activity android:name=".admin.activity.MainActivity" />
+        <activity android:name=".common.BaseActivity" />
+        <activity android:name=".common.LoginActivity"/>
+        <activity android:name=".admin.activity.AdminMainActivity" />
     </application>
 
 </manifest>
