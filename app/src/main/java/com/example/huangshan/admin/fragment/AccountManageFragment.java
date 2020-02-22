@@ -17,6 +17,7 @@ import com.bumptech.glide.Glide;
 import com.example.huangshan.R;
 import com.example.huangshan.admin.activity.AboutActivity;
 //import com.example.huangshan.admin.activity.AdminSelfInfoActivity;
+import com.example.huangshan.admin.activity.AdminSelfInfoActivity;
 import com.example.huangshan.admin.activity.AdminsMapViewActivity;
 import com.example.huangshan.common.LoginActivity;
 import com.example.huangshan.admin.activity.SettingsActivity;
@@ -42,8 +43,7 @@ public class AccountManageFragment extends Fragment implements View.OnClickListe
   @BindView(R.id.ll_root4) LinearLayout aboutLayout;
 
   private View view;
-  private Bundle bundle = new Bundle();
-  private Admin currentAdmin;
+
   private static final String TAG = "AccountManageFragment";
 
   public AccountManageFragment() {
@@ -95,15 +95,15 @@ public class AccountManageFragment extends Fragment implements View.OnClickListe
   public void onClick(View v) {
     switch (v.getId()){
       case R.id.headicon:
+        //todo
         Toast.makeText(getActivity(),"点击了头像",Toast.LENGTH_SHORT).show();
-        Intent intent4 = new Intent(getActivity(),LoginActivity.class);
-        startActivity(intent4);
+//        Intent intent4 = new Intent(getActivity(),LoginActivity.class);
+//        startActivity(intent4);
         break;
       case R.id.admin_self_ll_root1:
         //管理员个人信息
-//        Intent intent5 = new Intent(getActivity(), AdminSelfInfoActivity.class);
-//        intent5.putExtras(bundle);
-//        startActivity(intent5);
+        Intent intent5 = new Intent(getActivity(), AdminSelfInfoActivity.class);
+        startActivity(intent5);
         break;
       case R.id.ll_root1:
         //管理员地图一览
