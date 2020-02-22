@@ -171,6 +171,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
         SharedPreferences preferences= getActivity().getSharedPreferences("loginUser", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("role", "admin");
+        editor.putInt("id",admin.getId());
         editor.putString("account",admin.getAccount());
         editor.putString("name",admin.getName());
         editor.putString("sex",admin.getSex());
@@ -180,6 +181,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
         editor.putString("birth",admin.getBirth());
         editor.putInt("workYear",admin.getWorkYear());
         editor.putString("introduction",admin.getIntroduction());
+        editor.putString("roleName",admin.getRoleName());
         editor.apply();
     }
 
@@ -191,6 +193,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
         SharedPreferences preferences= getActivity().getSharedPreferences("loginUser", MODE_PRIVATE);
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("role", "tourist");
+        editor.putInt("id",tourist.getId());
         editor.putString("account",tourist.getAccount());
         editor.putString("name",tourist.getName());
         editor.putString("sex",tourist.getSex());

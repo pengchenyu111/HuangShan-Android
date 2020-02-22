@@ -10,7 +10,6 @@ import android.widget.ImageView;
 
 import com.example.huangshan.R;
 import com.example.huangshan.admin.adapter.AdminListAdapter;
-import com.example.huangshan.admin.bean.OneAdminManage;
 import com.example.huangshan.admin.bean.ScenicManage;
 import com.example.huangshan.common.BaseActivity;
 

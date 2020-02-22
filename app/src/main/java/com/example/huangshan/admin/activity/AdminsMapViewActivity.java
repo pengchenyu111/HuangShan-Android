@@ -39,7 +39,6 @@ import com.example.huangshan.common.BaseActivity;
 import com.example.huangshan.constans.Constant;
 import com.example.huangshan.R;
 import com.example.huangshan.admin.adapter.MyInfoWindowAdapter;
-import com.example.huangshan.admin.bean.OneAdminManage;
 import com.example.huangshan.constans.ResultCode;
 import com.example.huangshan.http.ResultObj;
 import com.example.huangshan.http.RetrofitManager;

@@ -20,13 +20,8 @@ import com.example.huangshan.constans.Constant;
 import com.example.huangshan.R;
 import com.daimajia.swipe.SwipeLayout;
 import com.example.huangshan.admin.activity.AdminInformationActivity;
-import com.example.huangshan.admin.bean.ResultMessage;
-import com.example.huangshan.utils.HttpUtil;
-import com.google.gson.Gson;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -36,6 +31,9 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
 public class AdminListAdapter extends RecyclerSwipeAdapter<AdminListAdapter.AdminViewHolder> {
 
     private static final String TAG = "AdminListAdapter";
+
+    private Context mContext;
+    private List<ScenicManage> adminManages;
 
     public static class AdminViewHolder extends RecyclerView.ViewHolder {
         SwipeLayout swipeLayout; // 一个item的根
@@ -60,8 +58,7 @@ public class AdminListAdapter extends RecyclerSwipeAdapter<AdminListAdapter.Admi
         }
     }
 
-    private Context mContext;
-    private List<ScenicManage> adminManages;
+
 
     //Adapter构造函数
     public AdminListAdapter(Context context,List<ScenicManage> objests){

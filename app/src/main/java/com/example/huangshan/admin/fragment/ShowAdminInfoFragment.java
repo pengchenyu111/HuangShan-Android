@@ -18,7 +18,6 @@ import com.bumptech.glide.Glide;
 import com.example.huangshan.admin.bean.ScenicManage;
 import com.example.huangshan.constans.Constant;
 import com.example.huangshan.R;
-import com.example.huangshan.admin.bean.OneAdminManage;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import butterknife.BindView;
