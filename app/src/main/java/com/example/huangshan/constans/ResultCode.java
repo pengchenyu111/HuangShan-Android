@@ -5,6 +5,8 @@ package com.example.huangshan.constans;
  */
 public class ResultCode {
 
+    public  static final int OK = 800;
+    public  static final int QUERY_FAIL = 801;
     public  static final int ADMIN_LOGIN = 809;
     public  static final int TOURIST_LOGIN = 810;
     //账号或密码错误

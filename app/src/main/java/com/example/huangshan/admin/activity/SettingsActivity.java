@@ -16,22 +16,22 @@ import butterknife.ButterKnife;
 
 
 /**
- * 这里是 设置 Activity  todo
+ * 这里是 设置 Activity
  */
 public class SettingsActivity extends BaseActivity implements View.OnClickListener{
 
-    @BindView(R.id.setting_back_btn)
-    ImageView back;
-    @BindView(R.id.admin_exit)
-    Button adminExit;//退出登录按钮
+    @BindView(R.id.setting_back_btn) ImageView back;
+    @BindView(R.id.admin_exit) Button adminExit;//退出登录按钮
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
+        //绑定控件
         ButterKnife.bind(this);
 
+        //设置响应
         back.setOnClickListener(this::onClick);
         adminExit.setOnClickListener(this::onClick);
 
@@ -45,11 +45,11 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
                 break;
             case R.id.admin_exit:
                 //清空缓存
-                SharedPreferences preferences= getSharedPreferences("admin", MODE_PRIVATE);
+                SharedPreferences preferences= getSharedPreferences("loginUser", MODE_PRIVATE);
                 SharedPreferences.Editor editor = preferences.edit();
                 editor.clear();
                 editor.apply();
-                //跳转回LoginActivity todo 有bug
+                //跳转回LoginActivity
                 Intent intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
                 break;

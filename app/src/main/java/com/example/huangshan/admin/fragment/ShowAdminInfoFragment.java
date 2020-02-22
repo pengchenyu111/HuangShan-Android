@@ -15,6 +15,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.huangshan.admin.bean.ScenicManage;
 import com.example.huangshan.constans.Constant;
 import com.example.huangshan.R;
 import com.example.huangshan.admin.bean.OneAdminManage;
@@ -56,8 +57,6 @@ public class ShowAdminInfoFragment extends Fragment implements View.OnClickListe
     //按钮
     @BindView(R.id.admin_info_back_btn)
     ImageView back;
-    @BindView(R.id.update_admin_info)
-    TextView updateInfo;
     @BindView(R.id.update_admin_info_btn)
     FloatingActionButton updateInfoBtn;
 
@@ -91,7 +90,7 @@ public class ShowAdminInfoFragment extends Fragment implements View.OnClickListe
 
         //获得Activity传来的数据
         Bundle bundle = getArguments();
-        OneAdminManage adminInfo = (OneAdminManage) bundle.getSerializable("adminInfo");
+        ScenicManage adminInfo = (ScenicManage) bundle.getSerializable("adminInfo");
 
         //将数据写进界面
         showDataToView(adminInfo);
@@ -99,19 +98,22 @@ public class ShowAdminInfoFragment extends Fragment implements View.OnClickListe
         return view;
     }
 
-    private void showDataToView(OneAdminManage adminInfo) {
-        Glide.with(getActivity()).load(Constant.URL_HEADICONS+"15982295274.png").into(adminHeadIcon);//todo 加载头像
+    private void showDataToView(ScenicManage adminInfo) {
+        Glide.with(getActivity()).load(adminInfo.getAdminHeadIcon()).into(adminHeadIcon);
         adminNameTitle.setText(adminInfo.getAdminName());
         adminName.setText(adminInfo.getAdminName());
         adminWorkSpot.setText(adminInfo.getScenicName());
         adminWorkTime.setText(adminInfo.getAdminWorkDay()+"  "+adminInfo.getAdminWorkTime());
-        adminPhone.setText(adminInfo.getAdminPhone());
-        adminSex.setText(adminInfo.getAdminSex());
-        adminAge.setText(adminInfo.getAdminAge());
-        adminWorkYear.setText(adminInfo.getAdminWorkYear());
-        adminIntroduction.setText(adminInfo.getAdminIntroduction());
+        adminPhone.setText(adminInfo.getPhone());
+        adminSex.setText(adminInfo.getSex());
+        adminAge.setText(String.valueOf(adminInfo.getAge()));
+        adminWorkYear.setText(String.valueOf(adminInfo.getWorkYear()));
+        adminIntroduction.setText(adminInfo.getIntroduction());
     }
 
+    /**
+     * 添加随机背景
+     */
     private void addBackground() {
         int random = (int)(Math.random()*4);
         int temp = random % 4;
@@ -133,6 +135,7 @@ public class ShowAdminInfoFragment extends Fragment implements View.OnClickListe
                 getActivity().finish();
                 break;
             case R.id.update_admin_info_btn:
+                //todo 这里到底怎么解决？
                 Toast.makeText(getActivity(),"点击了flobtn",Toast.LENGTH_SHORT).show();
                 break;
                 default:break;

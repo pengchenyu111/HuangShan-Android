@@ -13,12 +13,13 @@ import android.widget.Toast;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.daimajia.swipe.adapters.RecyclerSwipeAdapter;
+import com.example.huangshan.admin.bean.ScenicManage;
 import com.example.huangshan.constans.Constant;
 import com.example.huangshan.R;
 import com.daimajia.swipe.SwipeLayout;
 import com.example.huangshan.admin.activity.AdminInformationActivity;
-import com.example.huangshan.admin.bean.OneAdminManage;
 import com.example.huangshan.admin.bean.ResultMessage;
 import com.example.huangshan.utils.HttpUtil;
 import com.google.gson.Gson;
@@ -44,7 +45,7 @@ public class AdminListAdapter extends RecyclerSwipeAdapter<AdminListAdapter.Admi
         TextView adminManageSpot; // 管理地点
         ImageView adminInfo;// 管理员信息按钮
         ImageView adminPhone; //管理员电话按钮
-        ImageView adminDelete; //管理员删除按钮
+        //ImageView adminDelete; //管理员删除按钮
 
         public AdminViewHolder(View itemView) {
             super(itemView);
@@ -55,15 +56,15 @@ public class AdminListAdapter extends RecyclerSwipeAdapter<AdminListAdapter.Admi
             adminManageSpot = itemView.findViewById(R.id.admin_list_spot);
             adminInfo = itemView.findViewById(R.id.admin_item_info);
             adminPhone = itemView.findViewById(R.id.admin_item_call);
-            adminDelete = itemView.findViewById(R.id.admin_item_delete);
+            //adminDelete = itemView.findViewById(R.id.admin_item_delete);
         }
     }
 
     private Context mContext;
-    private List<OneAdminManage> adminManages;
+    private List<ScenicManage> adminManages;
 
     //Adapter构造函数
-    public AdminListAdapter(Context context,List<OneAdminManage> objests){
+    public AdminListAdapter(Context context,List<ScenicManage> objests){
         this.mContext = context;
         this.adminManages = objests;
     }
@@ -71,7 +72,7 @@ public class AdminListAdapter extends RecyclerSwipeAdapter<AdminListAdapter.Admi
 
     @Override
     public AdminViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_adminlist_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.adapter_adminlist_item,parent,false);
         AdminViewHolder holder = new AdminViewHolder(view);
         return holder;
     }
@@ -81,6 +82,7 @@ public class AdminListAdapter extends RecyclerSwipeAdapter<AdminListAdapter.Admi
         //显示信息
         adminViewHolder.adminName.setText(adminManages.get(i).getAdminName());
         adminViewHolder.adminManageSpot.setText(adminManages.get(i).getScenicName());
+        Glide.with(mContext).load(adminManages.get(i).getAdminHeadIcon()).into(adminViewHolder.adminHeadIcon);
         //动画
         adminViewHolder.swipeLayout.setShowMode(SwipeLayout.ShowMode.LayDown);
         adminViewHolder.swipeLayout.addDrag(SwipeLayout.DragEdge.Right, adminViewHolder.swipeLayout.findViewWithTag("swipe_menu"));
@@ -89,7 +91,9 @@ public class AdminListAdapter extends RecyclerSwipeAdapter<AdminListAdapter.Admi
         adminViewHolder.infoRoot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(mContext,"点击了item:"+adminManages.get(i).getAdminName(),Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(mContext, AdminInformationActivity.class);
+                intent.putExtra("currentAdminManage",adminManages.get(i));
+                mContext.startActivity(intent);
             }
         });
 
@@ -109,87 +113,87 @@ public class AdminListAdapter extends RecyclerSwipeAdapter<AdminListAdapter.Admi
             public void onClick(View v) {
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_DIAL);
-                intent.setData(Uri.parse("tel:"+adminManages.get(i).getAdminPhone()));
+                intent.setData(Uri.parse("tel:"+adminManages.get(i).getPhone()));
                 mContext.startActivity(intent);
             }
         });
 
         //删除管理员按钮
-        adminViewHolder.adminDelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                //获得数据
-                String url = Constant.URL+"DeleteAdminManage";
-                Map<String,String> map = new HashMap<>();
-                map.put("scenicId",adminManages.get(i).getScenicId());
-                map.put("adminAccount",adminManages.get(i).getAdminAccount());
-
-                //显示 确认删除 的提示框
-                new SweetAlertDialog(mContext,SweetAlertDialog.WARNING_TYPE)
-                        .setTitleText("删除  "+adminManages.get(i).getAdminName()+"  ？")
-                        .setContentText("一旦删除将无法找回此人的信息!")
-                        .setCancelText("取消")
-                        .setConfirmText("确认")
-                        .showCancelButton(true)
-                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sweetAlertDialog) {
-                                //当前提示框消失
-                                sweetAlertDialog.dismissWithAnimation();
-                            }
-                        })
-                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                            @Override
-                            public void onClick(SweetAlertDialog sweetAlertDialog) {
-
-                                //更新数据库
-                                try {
-                                    String result = HttpUtil.postRequest(url,map);
-                                    Gson gson = new Gson();
-                                    ResultMessage message = gson.fromJson(result,ResultMessage.class);
-                                    if (message.getResultCode().equals("006")){
-                                        // 显示删除成功的提示框
-                                        deleteSuccess(sweetAlertDialog, adminViewHolder, i);
-                                    }else if (message.getResultCode().equals("007")){
-                                        //显示失败的弹框
-                                        deleteFailed(sweetAlertDialog);
-                                    }
-
-                                } catch (Exception e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        }).show();
-
-            }
-        });
+//        adminViewHolder.adminDelete.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                //获得数据
+//                String url = Constant.URL+"DeleteAdminManage";
+//                Map<String,String> map = new HashMap<>();
+////                map.put("scenicId",adminManages.get(i).getScenicId());
+////                map.put("adminAccount",adminManages.get(i).getAdminId());
+//
+//                //显示 确认删除 的提示框
+//                new SweetAlertDialog(mContext,SweetAlertDialog.WARNING_TYPE)
+//                        .setTitleText("删除  "+adminManages.get(i).getAdminName()+"  ？")
+//                        .setContentText("一旦删除将无法找回此人的信息!")
+//                        .setCancelText("取消")
+//                        .setConfirmText("确认")
+//                        .showCancelButton(true)
+//                        .setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+//                            @Override
+//                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+//                                //当前提示框消失
+//                                sweetAlertDialog.dismissWithAnimation();
+//                            }
+//                        })
+//                        .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+//                            @Override
+//                            public void onClick(SweetAlertDialog sweetAlertDialog) {
+//
+//                                //更新数据库
+//                                try {
+//                                    String result = HttpUtil.postRequest(url,map);
+//                                    Gson gson = new Gson();
+//                                    ResultMessage message = gson.fromJson(result,ResultMessage.class);
+//                                    if (message.getResultCode().equals("006")){
+//                                        // 显示删除成功的提示框
+//                                        deleteSuccess(sweetAlertDialog, adminViewHolder, i);
+//                                    }else if (message.getResultCode().equals("007")){
+//                                        //显示失败的弹框
+//                                        deleteFailed(sweetAlertDialog);
+//                                    }
+//
+//                                } catch (Exception e) {
+//                                    e.printStackTrace();
+//                                }
+//                            }
+//                        }).show();
+//
+//            }
+//        });
     }
 
-    private void deleteFailed(SweetAlertDialog sweetAlertDialog) {
-        sweetAlertDialog
-                .setTitleText("删除失败")
-                .setContentText("服务器繁忙，请稍后再试！")
-                .changeAlertType(SweetAlertDialog.ERROR_TYPE);
-    }
-
-    private void deleteSuccess(SweetAlertDialog sweetAlertDialog, AdminViewHolder adminViewHolder, int i) {
-        sweetAlertDialog
-                .setTitleText("删除")
-                .setContentText("这位负责人的信息已被删除！")
-                .setConfirmText("OK")
-                .showCancelButton(false)
-                .setCancelClickListener(null)
-                .setConfirmClickListener(null)
-                .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-
-        // 在列表中去除
-        mItemManger.removeShownLayouts(adminViewHolder.swipeLayout);
-        adminManages.remove(i);
-        notifyItemRemoved(i);
-        notifyItemRangeChanged(i, adminManages.size());
-        mItemManger.closeAllItems();
-    }
+//    private void deleteFailed(SweetAlertDialog sweetAlertDialog) {
+//        sweetAlertDialog
+//                .setTitleText("删除失败")
+//                .setContentText("服务器繁忙，请稍后再试！")
+//                .changeAlertType(SweetAlertDialog.ERROR_TYPE);
+//    }
+//
+//    private void deleteSuccess(SweetAlertDialog sweetAlertDialog, AdminViewHolder adminViewHolder, int i) {
+//        sweetAlertDialog
+//                .setTitleText("删除")
+//                .setContentText("这位负责人的信息已被删除！")
+//                .setConfirmText("OK")
+//                .showCancelButton(false)
+//                .setCancelClickListener(null)
+//                .setConfirmClickListener(null)
+//                .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+//
+//        // 在列表中去除
+//        mItemManger.removeShownLayouts(adminViewHolder.swipeLayout);
+//        adminManages.remove(i);
+//        notifyItemRemoved(i);
+//        notifyItemRangeChanged(i, adminManages.size());
+//        mItemManger.closeAllItems();
+//    }
 
     @Override
     public int getItemCount() {

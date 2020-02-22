@@ -25,13 +25,13 @@ public class MyInfoWindowAdapter implements AMap.InfoWindowAdapter {
 
     @Override
     public View getInfoWindow(Marker marker) {
-//        获得marker内的内容
+        //获得marker内的内容
         latLng = marker.getPosition();
         snippet = marker.getSnippet();
         adInfo = marker.getTitle();
         String[] temp = snippet.split(",");
 
-//        加载infowindow的布局
+        //加载infowindow的布局
         View view = LayoutInflater.from(context).inflate(R.layout.layout_infowindow,null);
         TextView title = (TextView)view.findViewById(R.id.infowindow_title);
         TextView adminName = (TextView)view.findViewById(R.id.infowindow_adminName);

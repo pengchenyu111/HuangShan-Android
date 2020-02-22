@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -229,7 +230,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
             case R.id.login_back:
                 //FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                 //fragmentManager.popBackStack();
-                getActivity().finish();
+                ActivityCollector.finishAll();
                 break;
                 default:break;
         }

@@ -65,7 +65,7 @@ public class NotificationFragment extends Fragment implements View.OnClickListen
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //加载布局
-        view = inflater.inflate(R.layout.fragment_notification,container,false);
+        view = inflater.inflate(R.layout.fragment_main_notification,container,false);
         //绑定控件
         ButterKnife.bind(this,view);
         //设置响应

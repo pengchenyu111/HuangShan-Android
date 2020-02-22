@@ -141,7 +141,7 @@ public class NotificationManageActivity extends BaseActivity implements View.OnC
 //    }
 //    @Override
 //    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        View textView=inflater.inflate(R.layout.fragment_notification,null);
+//        View textView=inflater.inflate(R.layout.fragment_main_notification,null);
 //
 //        FloatingActionButton circle_add=(FloatingActionButton) textView.findViewById(R.id.circle_add);
 //
