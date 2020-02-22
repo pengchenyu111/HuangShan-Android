@@ -49,6 +49,8 @@ public class AdminMainActivity extends BaseActivity implements BottomNavigationV
         setContentView(R.layout.activity_admin_main);
         //绑定控件
         ButterKnife.bind(this);
+        //设置响应
+        bottomNavigationView.setOnNavigationItemSelectedListener(this::onNavigationItemSelected);
     }
 
     /**

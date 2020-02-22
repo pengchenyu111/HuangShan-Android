@@ -1,6 +1,7 @@
 package com.example.huangshan.admin.activity;
 
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -15,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.AMapOptions;
@@ -29,11 +31,19 @@ import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.bumptech.glide.Glide;
+import com.example.huangshan.admin.bean.Admin;
+import com.example.huangshan.admin.bean.ScenicManage;
+import com.example.huangshan.admin.service.AdminService;
+import com.example.huangshan.admin.service.ScenicManageService;
 import com.example.huangshan.common.BaseActivity;
 import com.example.huangshan.constans.Constant;
 import com.example.huangshan.R;
 import com.example.huangshan.admin.adapter.MyInfoWindowAdapter;
 import com.example.huangshan.admin.bean.OneAdminManage;
+import com.example.huangshan.constans.ResultCode;
+import com.example.huangshan.http.ResultObj;
+import com.example.huangshan.http.RetrofitManager;
+import com.example.huangshan.http.RxSchedulers;
 import com.example.huangshan.utils.HttpUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -44,6 +54,8 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import io.reactivex.functions.Consumer;
+import retrofit2.Retrofit;
 
 public class AdminsMapViewActivity extends BaseActivity implements View.OnClickListener, AMap.OnMarkerClickListener {
 
@@ -59,44 +71,58 @@ public class AdminsMapViewActivity extends BaseActivity implements View.OnClickL
     private UiSettings uiSettings;
     private MyInfoWindowAdapter adapter;
     private PopupWindow mPopupWindow;
-    private List<OneAdminManage> adminManageList = new ArrayList<>();
-    private OneAdminManage currentAdminManage;
+    private List<ScenicManage> adminManageList = new ArrayList<ScenicManage>();
+    private ScenicManage currentAdminManage;
     private Bundle bundle;
+
+    public RetrofitManager retrofitManager = new RetrofitManager();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admins_map_view);
-//        绑定控件
+        //绑定控件
         ButterKnife.bind(this);
-//        设置响应
+        //设置响应
         adminMapBackBtn.setOnClickListener(this::onClick);
         showAdminList.setOnClickListener(this::onClick);
-
+        //初始化网络请求
+        retrofitManager.init();
+        //地图绑定
         mapView.onCreate(savedInstanceState);
         bundle = savedInstanceState;
-
-        //初始化：从数据库获取负责人的信息
-        initData();
-
         //初始化地图
         initMapView();
+        //初始化：从数据库获取负责人的信息
+        initData();
     }
 
+    @SuppressLint("CheckResult")
     private void initData() {
-        String url = Constant.URL+"AllAdminsServlet";
-        try {
-            //发网络请求，获取String 结果集
-            String result = HttpUtil.getRequest(url);
-
-            //转成实体对象,并写到List里
-            Gson gson = new Gson();
-            //由于返回的数据和一个很多条管理信息组成的数组，所以不能单纯用 ：gson.fromJson(result,OneAdminManage.class)
-            adminManageList = gson.fromJson(result,new TypeToken<List<OneAdminManage>>(){}.getType());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Retrofit retrofit = retrofitManager.getRetrofit();
+        ScenicManageService scenicManageService = retrofit.create(ScenicManageService.class);
+        scenicManageService.allScenicManages()
+                .compose(RxSchedulers.<ResultObj>io_main())
+                .subscribe(new Consumer<ResultObj>() {
+                    @Override
+                    public void accept(ResultObj resultObj) throws Exception {
+                        if (resultObj.getCode() == ResultCode.OK){
+                            Gson gson = new Gson();
+                            String data = gson.toJson(resultObj.getData());
+                            adminManageList = gson.fromJson(data,new  TypeToken<List<ScenicManage>>(){}.getType());
+                            //绘制marker
+                            drawMarkers(adminManageList);
+                        }else if (resultObj.getCode() == ResultCode.QUERY_FAIL){
+                            Toast.makeText(getApplicationContext(),"查询失败，请稍后再试！",Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                }, new Consumer<Throwable>() {
+                    @Override
+                    public void accept(Throwable throwable) throws Exception {
+                        Log.d(TAG,throwable.getMessage());
+                    }
+                });
     }
 
     /**
@@ -104,24 +130,24 @@ public class AdminsMapViewActivity extends BaseActivity implements View.OnClickL
      */
     private void initMapView() {
 
-//        获得地图
+        //获得地图
         aMap = mapView.getMap();
-//        转移镜头到黄山风景区
+        //转移镜头到黄山风景区
         LatLng latLng = new LatLng(Constant.HUANGSHAN_LATITUDE,Constant.HUANGSHAN_LONGITITUDE);
         aMap.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(latLng,13,0,0)));
-//        实例化 UiSettings 对象
+        //实例化 UiSettings 对象
         uiSettings = aMap.getUiSettings();
-//        不显示缩放按钮
+        //不显示缩放按钮
         uiSettings.setZoomControlsEnabled(false);
-//        显示指南针
+        //显示指南针
         uiSettings.setCompassEnabled(true);
-//        显示比例尺
+        //显示比例尺
         uiSettings.setScaleControlsEnabled(true);
-//        高德地图logo放于左下角
+        //高德地图logo放于左下角
         uiSettings.setLogoPosition(AMapOptions.LOGO_POSITION_BOTTOM_LEFT);
-//        显示默认的定位按钮
+        //显示默认的定位按钮
         uiSettings.setMyLocationButtonEnabled(true);
-//        设置显示自身定位的小图标
+        //设置显示自身定位的小图标
         MyLocationStyle myLocationStyle = new MyLocationStyle();
 //        LOCATION_TYPE_LOCATION_ROTATE:系统默认，连续定位、且将视角移动到地图中心点，定位点依照设备方向旋转，并且会跟随设备移动。（1秒1次定位）
 //        LOCATION_TYPE_SHOW) ;定位一次
@@ -132,14 +158,12 @@ public class AdminsMapViewActivity extends BaseActivity implements View.OnClickL
         myLocationStyle.radiusFillColor(Color.argb(0,0,0,0));//精度圈 圈范围隐藏
 
         aMap.setMyLocationStyle(myLocationStyle);
-//        设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false
+        //设置为true表示启动显示定位蓝点，false表示隐藏定位蓝点并不进行定位，默认是false
         aMap.setMyLocationEnabled(true);
-//        设置自定义 infowindow
+        //设置自定义 infowindow
         adapter = new MyInfoWindowAdapter();
         aMap.setInfoWindowAdapter(adapter);
         aMap.setOnMarkerClickListener(this::onMarkerClick);
-
-        drawMarkers(adminManageList);
     }
 
 
@@ -147,22 +171,20 @@ public class AdminsMapViewActivity extends BaseActivity implements View.OnClickL
      * 画自定义的 Marker
      * 这里是根据数据库检索的结果画的
      */
-    private void drawMarkers(List<OneAdminManage> adminManages){
-
-        for (int i =0;i < adminManages.size();i++){
+    private void drawMarkers(List<ScenicManage> scenicManages){
+        for (int i =0;i < scenicManages.size();i++){
             MarkerOptions markerOptions = new MarkerOptions();
-            OneAdminManage oneAdminManage = adminManages.get(i);
+            ScenicManage scenicManage = scenicManages.get(i);
 
-            LatLng latLng = new LatLng(Double.parseDouble(oneAdminManage.getScenicLatitude()),Double.parseDouble(oneAdminManage.getScenicLongitude()));
+            LatLng latLng = new LatLng(scenicManage.getLatitude(),scenicManage.getLongitude());
             markerOptions.position(latLng);// Marker的位置
-            markerOptions.title(oneAdminManage.getScenicName());// Marker的标题
+            markerOptions.title(scenicManage.getScenicName());// Marker的标题
 
             //由于高德地图的marker 没有携带其他信息的方法，所以我只能将信息封装到snippet中，到时候通过split分割了
-            markerOptions.snippet(oneAdminManage.getAdminName()+","+oneAdminManage.getAdminWorkYear()+","+oneAdminManage.getAdminAccount()+","+oneAdminManage.getScenicId());//Marker的内容
+            markerOptions.snippet(scenicManage.getAdminName()+","+scenicManage.getWorkYear()+","+scenicManage.getAdminId()+","+scenicManage.getScenicId());//Marker的内容
             markerOptions.draggable(false);//设置可拖动
             markerOptions.icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource(getResources(),R.mipmap.maker_admin)));//加上图标
             markerOptions.setFlat(true);//设置marker平贴地图效果
-
             Marker marker = aMap.addMarker(markerOptions);
         }
     }
@@ -175,7 +197,7 @@ public class AdminsMapViewActivity extends BaseActivity implements View.OnClickL
 
         //检索出当前的OneAdminMenage
         for (int i = 0, n = adminManageList.size();i< n;i++){
-            if (adminManageList.get(i).getAdminAccount().equals(temp[2]) && adminManageList.get(i).getScenicId().equals(temp[3])){
+            if (adminManageList.get(i).getAdminId() == Integer.parseInt(temp[2]) && adminManageList.get(i).getScenicId() == Integer.parseInt(temp[3])){
                 currentAdminManage = adminManageList.get(i);
                 break;
             }
@@ -184,7 +206,11 @@ public class AdminsMapViewActivity extends BaseActivity implements View.OnClickL
         return false;
     }
 
-    private void showPopUpWindow(OneAdminManage adminManage) {
+    /**
+     * 绘制弹出框
+     * @param scenicManage
+     */
+    private void showPopUpWindow(ScenicManage scenicManage) {
         // 绘制前先清除之前的popupwindow，否则内存泄漏
         if (mPopupWindow != null){
             mPopupWindow.dismiss();
@@ -215,10 +241,10 @@ public class AdminsMapViewActivity extends BaseActivity implements View.OnClickL
         callAdmin.setOnClickListener(this::onClick);
 
         //显示在界面上
-        Glide.with(this).load(Constant.URL_HEADICONS+"15982295274.png").into(adminHeadIcon);//todo 加载头像
-        adminName.setText(adminManage.getAdminName());
-        adminManagedSpot.setText(adminManage.getScenicName());
-        adminWorkTime.setText("工作经验"+adminManage.getAdminWorkYear()+"年");
+        Glide.with(this).load(scenicManage.getAdminHeadIcon()).into(adminHeadIcon);
+        adminName.setText(scenicManage.getAdminName());
+        adminManagedSpot.setText(scenicManage.getScenicName());
+        adminWorkTime.setText("工作经验"+scenicManage.getWorkYear()+"年");
     }
 
     @Override
@@ -246,27 +272,36 @@ public class AdminsMapViewActivity extends BaseActivity implements View.OnClickL
             case R.id.lookover_admin_info:
                 //弹出窗中点击获取管理员的详细信息
                 turnToAdminInfo();
-                break;//todo
+                break;
             default:break;
         }
     }
 
+    /**
+     * 转到某个管理员的个人信息
+     */
     private void turnToAdminInfo() {
         Intent intent = new Intent(this, AdminInformationActivity.class);
         intent.putExtra("currentAdminManage",currentAdminManage);
         startActivity(intent);
     }
 
+    /**
+     * 转到管理员列表
+     */
     private void turnToListAdminActivity() {
         Intent intent = new Intent(AdminsMapViewActivity.this, ListAdminsActivity.class);
         intent.putExtra("allAdmins", (Serializable) adminManageList);
         startActivity(intent);
     }
 
+    /**
+     * 给某个管理员打电话
+     */
     private void callAdmin() {
         Intent intent = new Intent();
         intent.setAction(Intent.ACTION_DIAL);
-        String url = "tel:"+currentAdminManage.getAdminPhone();
+        String url = "tel:"+currentAdminManage.getPhone();
         intent.setData(Uri.parse(url));
         startActivity(intent);
     }
@@ -289,14 +324,16 @@ public class AdminsMapViewActivity extends BaseActivity implements View.OnClickL
     @Override
     protected void onResume() {
         super.onResume();
-        //在activity执行onResume时执行mMapView.onResume ()，重新绘制加载地图
-        mapView.onDestroy();
-        mapView.onCreate(bundle);
-        Log.d(TAG,"调用了一次Resume方法!");//todo 要解决刷新问题
-        initData();
-        Log.d(TAG,"调用了一次initData方法!");
-        initMapView();
-        Log.d(TAG,"调用了一次initMapView方法!");
+        mapView.onResume();
+//在activity执行onResume时执行mMapView.onResume ()，重新绘制加载地图
+//        mapView.onDestroy();
+//        mapView.onCreate(bundle);
+//        Log.d(TAG,"调用了一次Resume方法!");//todo 要解决刷新问题
+//        initMapView();
+//        Log.d(TAG,"调用了一次initMapView方法!");
+//        initData();
+//        Log.d(TAG,"调用了一次initData方法!");
+
     }
 
     @Override

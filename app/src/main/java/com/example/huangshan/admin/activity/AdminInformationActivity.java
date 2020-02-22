@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.huangshan.R;
-import com.example.huangshan.admin.bean.OneAdminManage;
+import com.example.huangshan.admin.bean.ScenicManage;
 import com.example.huangshan.admin.fragment.ShowAdminInfoFragment;
 import com.example.huangshan.common.BaseActivity;
 
@@ -30,14 +30,14 @@ public class  AdminInformationActivity extends BaseActivity {
 
         //拿到传过来的数据
         Intent intent = getIntent();
-        OneAdminManage currentAdminManage = (OneAdminManage) intent.getSerializableExtra("currentAdminManage");
+        ScenicManage scenicManage = (ScenicManage) intent.getSerializableExtra("currentAdminManage");
 
         //设置第一个fragment,并向其传送数据
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         ShowAdminInfoFragment showAdminInfoFragment = new ShowAdminInfoFragment();
         Bundle bundle = new Bundle();
-        bundle.putSerializable("adminInfo",currentAdminManage);
+        bundle.putSerializable("adminInfo",scenicManage);
         showAdminInfoFragment.setArguments(bundle);
         fragmentTransaction.add(R.id.admin_info_container,showAdminInfoFragment);
         fragmentTransaction.commit();

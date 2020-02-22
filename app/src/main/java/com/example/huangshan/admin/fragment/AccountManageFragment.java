@@ -2,6 +2,7 @@ package com.example.huangshan.admin.fragment;
 
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -26,6 +27,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 
+import static android.content.Context.MODE_PRIVATE;
+
 /**
  * MainActivity中  账户 的fragment
  */
@@ -47,6 +50,10 @@ public class AccountManageFragment extends Fragment implements View.OnClickListe
     // Required empty public constructor
   }
 
+  /**
+   * 加载一次避免内存消耗
+   * @return
+   */
     public static AccountManageFragment newInstance() {
         Bundle args = new Bundle();
         AccountManageFragment fragment = new AccountManageFragment();
@@ -69,14 +76,19 @@ public class AccountManageFragment extends Fragment implements View.OnClickListe
     settingLayout.setOnClickListener(this);
     aboutLayout.setOnClickListener(this);
 
-//        设置头像
-    Glide.with(getActivity()).load(R.mipmap.admins).into(headIcon);
-
-    //拿到MainACtivity传过来的值
-    bundle = this.getArguments();
-    currentAdmin = (Admin) bundle.getSerializable("currentAdmin");
+    //加载头像头像
+    loadHeadIcon();
 
     return view;
+  }
+
+  /**
+   * 加载头像
+   */
+  private void loadHeadIcon() {
+    SharedPreferences preferences= getActivity().getSharedPreferences("loginUser", MODE_PRIVATE);
+    String headIconUrl = (String) preferences.getString("headIcon",null);
+    Glide.with(getActivity()).load(headIconUrl).into(headIcon);
   }
 
   @Override
@@ -88,23 +100,28 @@ public class AccountManageFragment extends Fragment implements View.OnClickListe
         startActivity(intent4);
         break;
       case R.id.admin_self_ll_root1:
+        //管理员个人信息
 //        Intent intent5 = new Intent(getActivity(), AdminSelfInfoActivity.class);
 //        intent5.putExtras(bundle);
 //        startActivity(intent5);
         break;
       case R.id.ll_root1:
+        //管理员地图一览
         Intent intent = new Intent(getActivity(),AdminsMapViewActivity.class);
         startActivity(intent);
         break;
       case R.id.ll_root2:
+        //游客账户管理
         Intent intent1 = new Intent(getActivity(),UsersManageActivity.class);
         startActivity(intent1);
         break;
       case R.id.ll_root3:
+        //设置界面
         Intent intent2 = new Intent(getActivity(), SettingsActivity.class);
         startActivity(intent2);
         break;
       case R.id.ll_root4:
+        //关于界面
         Intent intent3 = new Intent(getActivity(), AboutActivity.class);
         startActivity(intent3);
         break;

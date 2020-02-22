@@ -39,16 +39,16 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"/>
-            <ImageView
-                android:id="@+id/admin_item_delete"
-                android:src="@mipmap/admin_delete"
-                android:layout_width="70dp"
-                android:background="#FF3D00"
-                android:paddingLeft="25dp"
-                android:paddingRight="25dp"
-                android:layout_height="match_parent"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"/>
+            <!--<ImageView-->
+                <!--android:id="@+id/admin_item_delete"-->
+                <!--android:src="@mipmap/admin_delete"-->
+                <!--android:layout_width="70dp"-->
+                <!--android:background="#FF3D00"-->
+                <!--android:paddingLeft="25dp"-->
+                <!--android:paddingRight="25dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:layout_marginBottom="8dp"/>-->
 
         </LinearLayout>
 

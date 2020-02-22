@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import com.example.huangshan.R;
 import com.example.huangshan.admin.adapter.AdminListAdapter;
 import com.example.huangshan.admin.bean.OneAdminManage;
+import com.example.huangshan.admin.bean.ScenicManage;
 import com.example.huangshan.common.BaseActivity;
 
 import java.util.ArrayList;
@@ -28,7 +29,8 @@ public class ListAdminsActivity extends BaseActivity implements View.OnClickList
     @BindView(R.id.admins_list_back_btn) ImageView backButton;
 
     private AdminListAdapter adapter;
-    private List<OneAdminManage> list = new ArrayList<>();
+    private List<ScenicManage> list = new ArrayList<>();
+
     private static final String TAG = "ListAdminsActivity";
 
     @SuppressLint("WrongConstant")
@@ -61,7 +63,7 @@ public class ListAdminsActivity extends BaseActivity implements View.OnClickList
 
     private void initAdminInfo() {
         // 获得 AdminMapViewActivity 传过来的数据
-        list = (ArrayList<OneAdminManage>)getIntent().getSerializableExtra("allAdmins");
+        list = (ArrayList<ScenicManage>)getIntent().getSerializableExtra("allAdmins");
     }
 
     @Override

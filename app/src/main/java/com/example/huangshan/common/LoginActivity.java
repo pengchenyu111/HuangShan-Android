@@ -13,6 +13,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.widget.Toast;
 
 import com.example.huangshan.admin.activity.AdminMainActivity;
@@ -37,6 +38,9 @@ public class LoginActivity extends BaseActivity {
     };
     //背景视频
     private CustomVideoView videoView;
+
+    //记录用户首次点击返回键的时间
+    private long firstTime = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -104,6 +108,27 @@ public class LoginActivity extends BaseActivity {
 //        super.onDestroy();
 //        finishAndRemoveTask();
 //    }
+
+    /**
+     * 双击退出应用
+     * @param keyCode
+     * @param event
+     * @return
+     */
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_UP) {
+            long secondTime = System.currentTimeMillis();
+            if (secondTime - firstTime > 2000) {
+                Toast.makeText(LoginActivity.this, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+                firstTime = secondTime;
+                return true;
+            } else {
+                ActivityCollector.finishAll();
+            }
+        }
+        return super.onKeyUp(keyCode, event);
+    }
 
     /**
      * 以下函数为检查本 app所需要的运行时权限

@@ -9,6 +9,8 @@
     <color name="login_blue">#03A9F4</color>
     <color name="search_bar">#eee</color>
     <color name="searchBar_cursor">#bbb</color>
+    <color name="light_gray">#F5F5F5</color>
+    <color name="orange">#FF7046</color>
     <color name="red">#FF3B00</color>
     <color name="red_press">#990000</color>
     <color name="dark_gray">#4C535B</color>

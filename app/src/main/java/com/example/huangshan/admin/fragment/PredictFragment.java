@@ -52,7 +52,7 @@ public class PredictFragment extends Fragment implements View.OnClickListener{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         //加载布局
-        view = inflater.inflate(R.layout.fragment_predict,container,false);
+        view = inflater.inflate(R.layout.fragment_main_predict,container,false);
         //绑定控件
         ButterKnife.bind(this,view);
         //显示heweather插件
