@@ -1,4 +1,4 @@
-package com.example.huangshan.common;
+package com.example.huangshan.common.service;
 
 import com.example.huangshan.http.ResultObj;
 

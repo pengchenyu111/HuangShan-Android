@@ -19,7 +19,7 @@
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
-        android:name=".common.BaseApplication"
+        android:name=".common.base.BaseApplication"
         android:allowBackup="true"
         android:icon="@mipmap/app_icon"
         android:label="黄山任我行"
@@ -35,7 +35,7 @@
         <activity android:name=".admin.activity.UserFeedbackManageActivity" />
         <activity android:name=".admin.activity.NotificationManageActivity" />
         <activity
-            android:name=".common.SplashActivity"
+            android:name=".common.ui.SplashActivity"
             android:theme="@style/SplashActivityTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -57,8 +57,8 @@
         <service android:name="com.amap.api.location.APSService" />
 
         <activity android:name=".admin.activity.WeatherActivity" />
-        <activity android:name=".common.BaseActivity" />
-        <activity android:name=".common.LoginActivity"/>
+        <activity android:name=".common.base.BaseActivity" />
+        <activity android:name=".common.ui.LoginActivity"/>
         <activity android:name=".admin.activity.AdminMainActivity" />
     </application>
 

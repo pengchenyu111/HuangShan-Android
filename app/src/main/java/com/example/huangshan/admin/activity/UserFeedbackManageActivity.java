@@ -3,7 +3,7 @@ package com.example.huangshan.admin.activity;
 import android.os.Bundle;
 
 import com.example.huangshan.R;
-import com.example.huangshan.common.BaseActivity;
+import com.example.huangshan.common.base.BaseActivity;
 
 /**
  * 管理员处理用户反馈的 activity

@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.huangshan.R;
-import com.example.huangshan.common.LoginFragment;
+import com.example.huangshan.common.ui.LoginFragment;
 
 
 /**

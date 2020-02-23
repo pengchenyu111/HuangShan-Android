@@ -7,6 +7,7 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,15 +15,14 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.signature.ObjectKey;
 import com.example.huangshan.R;
 import com.example.huangshan.admin.activity.AboutActivity;
 //import com.example.huangshan.admin.activity.AdminSelfInfoActivity;
 import com.example.huangshan.admin.activity.AdminSelfInfoActivity;
 import com.example.huangshan.admin.activity.AdminsMapViewActivity;
-import com.example.huangshan.common.LoginActivity;
 import com.example.huangshan.admin.activity.SettingsActivity;
 import com.example.huangshan.admin.activity.UsersManageActivity;
-import com.example.huangshan.admin.bean.Admin;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -88,7 +88,10 @@ public class AccountManageFragment extends Fragment implements View.OnClickListe
   private void loadHeadIcon() {
     SharedPreferences preferences= getActivity().getSharedPreferences("loginUser", MODE_PRIVATE);
     String headIconUrl = (String) preferences.getString("headIcon",null);
-    Glide.with(getActivity()).load(headIconUrl).into(headIcon);
+    Glide.with(getActivity())
+            .load(headIconUrl)
+            .placeholder(R.mipmap.loading)
+            .into(headIcon);
   }
 
   @Override
@@ -130,4 +133,12 @@ public class AccountManageFragment extends Fragment implements View.OnClickListe
     }
   }
 
+  @Override
+  public void onResume() {
+    super.onResume();
+    //重新加载头像，防止用户修改
+    Log.d(TAG,"执行了onResume");
+    loadHeadIcon();
+
+  }
 }
