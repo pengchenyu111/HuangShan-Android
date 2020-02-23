@@ -9,6 +9,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,6 +19,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -76,9 +78,10 @@ public class AdminSelfInfoFragment extends Fragment implements View.OnClickListe
     @BindView(R.id.admin_self_info_introduction) TextView introductionView;
     @BindView(R.id.admin_self_info_null_spot) TextView nullSpot;
 
-    //返回按钮
+    //按钮
     @BindView(R.id.admin_slef_info_back_btn) ImageView backBtn;
-
+    @BindView(R.id.admin_self_info_phone_root1) LinearLayout phoneRootView;
+    @BindView(R.id.admin_self_info_introduction_root1) LinearLayout introductionRootView;
     //工作地点
     @BindView(R.id.admin_manage_spots_recycler_view) RecyclerView recyclerView;
 
@@ -109,6 +112,8 @@ public class AdminSelfInfoFragment extends Fragment implements View.OnClickListe
         //设置响应
         backBtn.setOnClickListener(this);
         headIconView.setOnClickListener(this);
+        phoneRootView.setOnClickListener(this);
+        introductionRootView.setOnClickListener(this);
         //初始化缓存
         preferences= getActivity().getSharedPreferences("loginUser", MODE_PRIVATE);
         //初始化网络请求
@@ -305,6 +310,17 @@ public class AdminSelfInfoFragment extends Fragment implements View.OnClickListe
                 });
     }
 
+    /**
+     * 更新联系电话
+     */
+    private void updatePhone() {
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        AdminPhoneUpdateFragment fragment = new AdminPhoneUpdateFragment();
+        transaction.replace(R.id.admin_self_info_container,fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -315,9 +331,24 @@ public class AdminSelfInfoFragment extends Fragment implements View.OnClickListe
             case R.id.admin_self_info_headicon:
                 //更新头像
                 showImg();
+            case R.id.admin_self_info_phone_root1:
+                //更新联系电话
+                updatePhone();
+                break;
+            case R.id.admin_self_info_introduction_root1:
+                //更新个人简介
+                break;
             default:break;
         }
     }
 
-
+    @Override
+    public void onResume() {
+        super.onResume();
+        //修改后及时更新界面信息
+        //更新电话
+        String phone = preferences.getString("phone", null);
+        phoneView.setText(phone);
+        //更新个人简介
+    }
 }
