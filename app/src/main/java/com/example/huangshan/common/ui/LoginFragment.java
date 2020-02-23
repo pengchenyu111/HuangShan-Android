@@ -1,13 +1,11 @@
-package com.example.huangshan.common;
+package com.example.huangshan.common.ui;
 
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.text.InputType;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +19,8 @@ import androidx.fragment.app.Fragment;
 import com.example.huangshan.admin.activity.AdminMainActivity;
 import com.example.huangshan.admin.bean.Tourist;
 import com.example.huangshan.admin.bean.Admin;
+import com.example.huangshan.common.service.LoginService;
+import com.example.huangshan.common.base.ActivityCollector;
 import com.example.huangshan.constans.ResultCode;
 import com.example.huangshan.http.ResultObj;
 import com.example.huangshan.http.RetrofitManager;

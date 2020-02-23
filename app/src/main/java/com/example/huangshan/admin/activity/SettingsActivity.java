@@ -8,8 +8,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 
 import com.example.huangshan.R;
-import com.example.huangshan.common.BaseActivity;
-import com.example.huangshan.common.LoginActivity;
+import com.example.huangshan.common.base.BaseActivity;
+import com.example.huangshan.common.ui.LoginActivity;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

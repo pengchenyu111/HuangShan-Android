@@ -9,7 +9,7 @@ import android.os.Bundle;
 import com.example.huangshan.R;
 import com.example.huangshan.admin.bean.ScenicManage;
 import com.example.huangshan.admin.fragment.ShowAdminInfoFragment;
-import com.example.huangshan.common.BaseActivity;
+import com.example.huangshan.common.base.BaseActivity;
 
 import butterknife.ButterKnife;
 

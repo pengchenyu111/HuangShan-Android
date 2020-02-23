@@ -16,7 +16,7 @@ import android.widget.Toast;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
-import com.example.huangshan.common.BaseActivity;
+import com.example.huangshan.common.base.BaseActivity;
 import com.example.huangshan.constans.Constant;
 import com.example.huangshan.R;
 import com.example.huangshan.utils.GetResourseIDUtil;

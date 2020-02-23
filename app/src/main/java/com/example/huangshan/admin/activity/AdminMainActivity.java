@@ -15,8 +15,8 @@ import com.example.huangshan.admin.fragment.PredictFragment;
 import com.example.huangshan.admin.fragment.NotificationFragment;
 import com.example.huangshan.admin.fragment.ShowDataFragment;
 import com.example.huangshan.admin.fragment.AccountManageFragment;
-import com.example.huangshan.common.ActivityCollector;
-import com.example.huangshan.common.BaseActivity;
+import com.example.huangshan.common.base.ActivityCollector;
+import com.example.huangshan.common.base.BaseActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import butterknife.BindView;

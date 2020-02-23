@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.huangshan.common.BaseActivity;
+import com.example.huangshan.common.base.BaseActivity;
 import com.example.huangshan.constans.Constant;
 import com.example.huangshan.R;
 import com.example.huangshan.admin.adapter.NotificationListAdapter;

@@ -4,12 +4,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import com.example.huangshan.R;
-import com.example.huangshan.admin.bean.Admin;
 import com.example.huangshan.admin.fragment.AdminSelfInfoFragment;
-import com.example.huangshan.common.BaseActivity;
+import com.example.huangshan.common.base.BaseActivity;
 
 import butterknife.ButterKnife;
 

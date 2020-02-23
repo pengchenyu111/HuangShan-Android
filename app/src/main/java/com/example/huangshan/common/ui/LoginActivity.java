@@ -1,4 +1,4 @@
-package com.example.huangshan.common;
+package com.example.huangshan.common.ui;
 
 import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
@@ -17,6 +17,8 @@ import android.view.KeyEvent;
 import android.widget.Toast;
 
 import com.example.huangshan.admin.activity.AdminMainActivity;
+import com.example.huangshan.common.base.ActivityCollector;
+import com.example.huangshan.common.base.BaseActivity;
 import com.example.huangshan.view.CustomVideoView;
 import com.example.huangshan.R;
 

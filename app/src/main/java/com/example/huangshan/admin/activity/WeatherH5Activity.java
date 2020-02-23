@@ -6,7 +6,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import com.example.huangshan.common.BaseActivity;
+import com.example.huangshan.common.base.BaseActivity;
 import com.example.huangshan.constans.Constant;
 import com.example.huangshan.R;
 

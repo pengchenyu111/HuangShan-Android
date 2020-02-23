@@ -1,4 +1,4 @@
-package com.example.huangshan.common;
+package com.example.huangshan.common.base;
 
 import android.app.Activity;
 

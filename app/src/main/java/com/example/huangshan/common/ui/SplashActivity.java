@@ -1,4 +1,4 @@
-package com.example.huangshan.common;
+package com.example.huangshan.common.ui;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -8,6 +8,8 @@ import android.view.View;
 
 
 import com.example.huangshan.R;
+import com.example.huangshan.common.base.BaseActivity;
+import com.example.huangshan.common.ui.LoginActivity;
 
 /**
  * 刚刚进入app时的界面
