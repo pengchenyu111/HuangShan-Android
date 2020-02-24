@@ -178,7 +178,8 @@ public class AdminIntroductionsUpdateFragment extends Fragment implements View.O
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.admin_new_introduction_back_btn:
-
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentManager.popBackStack();
                 break;
             case R.id.admin_new_introduction_save_btn:
                 updateIntroduction();
