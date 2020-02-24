@@ -321,6 +321,17 @@ public class AdminSelfInfoFragment extends Fragment implements View.OnClickListe
         transaction.commit();
     }
 
+    /**
+     * 更新个人简介
+     */
+    private void updateIntroduction() {
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        AdminIntroductionsUpdateFragment fragment = new AdminIntroductionsUpdateFragment();
+        transaction.replace(R.id.admin_self_info_container,fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -337,6 +348,7 @@ public class AdminSelfInfoFragment extends Fragment implements View.OnClickListe
                 break;
             case R.id.admin_self_info_introduction_root1:
                 //更新个人简介
+                updateIntroduction();
                 break;
             default:break;
         }
@@ -350,5 +362,7 @@ public class AdminSelfInfoFragment extends Fragment implements View.OnClickListe
         String phone = preferences.getString("phone", null);
         phoneView.setText(phone);
         //更新个人简介
+        String introduction = preferences.getString("introduction", null);
+        introductionView.setText(introduction);
     }
 }
