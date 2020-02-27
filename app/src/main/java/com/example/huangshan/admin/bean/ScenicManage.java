@@ -5,8 +5,8 @@ import androidx.annotation.NonNull;
 import java.io.Serializable;
 
 public class ScenicManage implements Serializable {
-    private int id;
-    private int adminId;
+    private long id;
+    private long adminId;
     private String adminHeadIcon;
     private String adminName;
     private String phone;
@@ -16,7 +16,7 @@ public class ScenicManage implements Serializable {
     private String introduction;
     private String adminWorkDay;
     private String adminWorkTime;
-    private int scenicId;
+    private long scenicId;
     private String scenicName;
     private String scenicHeadIcon;
     private int isClose;
@@ -26,7 +26,7 @@ public class ScenicManage implements Serializable {
     public ScenicManage() {
     }
 
-    public ScenicManage(int id, int adminId, String adminHeadIcon, String adminName, String phone, String sex, int age, int workYear, String introduction, String adminWorkDay, String adminWorkTime, int scenicId, String scenicName, String scenicHeadIcon, int isClose, double longitude, double latitude) {
+    public ScenicManage(long id, long adminId, String adminHeadIcon, String adminName, String phone, String sex, int age, int workYear, String introduction, String adminWorkDay, String adminWorkTime, long scenicId, String scenicName, String scenicHeadIcon, int isClose, double longitude, double latitude) {
         this.id = id;
         this.adminId = adminId;
         this.adminHeadIcon = adminHeadIcon;
@@ -46,19 +46,19 @@ public class ScenicManage implements Serializable {
         this.latitude = latitude;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-    public int getAdminId() {
+    public long getAdminId() {
         return adminId;
     }
 
-    public void setAdminId(int adminId) {
+    public void setAdminId(long adminId) {
         this.adminId = adminId;
     }
 
@@ -134,11 +134,11 @@ public class ScenicManage implements Serializable {
         this.adminWorkTime = adminWorkTime;
     }
 
-    public int getScenicId() {
+    public long getScenicId() {
         return scenicId;
     }
 
-    public void setScenicId(int scenicId) {
+    public void setScenicId(long scenicId) {
         this.scenicId = scenicId;
     }
 

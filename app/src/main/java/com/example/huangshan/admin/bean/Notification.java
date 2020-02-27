@@ -2,33 +2,35 @@ package com.example.huangshan.admin.bean;
 
 import java.io.Serializable;
 
-public class Notification implements Serializable {
+public class Notification  implements Serializable {
 
-    private int notificationId;
+    private long id;
     private String sendTime;
     private String sendAdminName;
     private String title;
     private String content;
-    private int type;//type==0 客流预警；1==>天气预警；2==>优惠通知
+    private String type;//type==0 紧急事件；1 客流预警；2==>天气预警；3==>优惠通知
+    private String isClose;
 
     public Notification() {
     }
 
-    public Notification(int notificationId, String sendTime, String sendAdminTime, String title, String content, int type) {
-        this.notificationId = notificationId;
+    public Notification(long id, String sendTime, String sendAdminName, String title, String content, String type, String isClose) {
+        this.id = id;
         this.sendTime = sendTime;
-        this.sendAdminName = sendAdminTime;
+        this.sendAdminName = sendAdminName;
         this.title = title;
         this.content = content;
         this.type = type;
+        this.isClose = isClose;
     }
 
-    public int getNotificationId() {
-        return notificationId;
+    public long getId() {
+        return id;
     }
 
-    public void setNotificationId(int notificationId) {
-        this.notificationId = notificationId;
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getSendTime() {
@@ -63,23 +65,32 @@ public class Notification implements Serializable {
         this.content = content;
     }
 
-    public int getType() {
+    public String getType() {
         return type;
     }
 
-    public void setType(int type) {
+    public void setType(String type) {
         this.type = type;
+    }
+
+    public String getIsClose() {
+        return isClose;
+    }
+
+    public void setIsClose(String isClose) {
+        this.isClose = isClose;
     }
 
     @Override
     public String toString() {
         return "Notification{" +
-                "notificationId=" + notificationId +
+                "id=" + id +
                 ", sendTime='" + sendTime + '\'' +
                 ", sendAdminName='" + sendAdminName + '\'' +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
-                ", type=" + type +
+                ", type='" + type + '\'' +
+                ", isClose='" + isClose + '\'' +
                 '}';
     }
 }

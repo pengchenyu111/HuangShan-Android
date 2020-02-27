@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="135dp">
+    android:layout_height="145dp">
 
     <com.daimajia.swipe.SwipeLayout
         android:id="@+id/notification_list_root"
@@ -29,8 +29,8 @@
                 android:paddingLeft="25dp"
                 android:paddingRight="25dp" />
             <ImageView
-                android:id="@+id/notification_item_delete"
-                android:src="@mipmap/admin_delete"
+                android:id="@+id/notification_item_outdate_btn"
+                android:src="@mipmap/out_date_btn"
                 android:layout_width="70dp"
                 android:background="#F44336"
                 android:paddingLeft="25dp"
@@ -75,32 +75,40 @@
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="9"
-                        android:orientation="vertical">
-                        <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_marginLeft="5dp">
+                        <FrameLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:layout_marginTop="5dp"
                             android:layout_marginBottom="5dp">
                             <TextView
-                                android:id="@+id/notification_sendTime"
+                                android:id="@+id/notification_item_sendTime"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="时间" />
-                        </LinearLayout>
+                            <TextView
+                                android:id="@+id/notification_send_admin_name"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="right"
+                                android:layout_marginRight="15dp"
+                                android:text="发送人：" />
+                        </FrameLayout>
                         <LinearLayout
                             android:orientation="vertical"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
                             <TextView
-                                android:id="@+id/notification_title"
+                                android:id="@+id/notification_item_title"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="主题:"
                                 android:textSize="18sp"
                                 android:textColor="#000000"/>
                             <TextView
-                                android:id="@+id/notification_content"
+                                android:id="@+id/notification_item_content"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="5dp"
@@ -112,12 +120,15 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="5dp">
                             <TextView
-                                android:id="@+id/notification_send_admin_name"
+                                android:id="@+id/notification_item_isclose"
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="right"
                                 android:layout_marginRight="15dp"
-                                android:text="发送人：" />
+                                android:text="已过期"
+                                android:textColor="@color/white"
+                                android:background="@drawable/btn_radius_red"
+                                android:visibility="gone"/>
                         </LinearLayout>
 
                     </LinearLayout>

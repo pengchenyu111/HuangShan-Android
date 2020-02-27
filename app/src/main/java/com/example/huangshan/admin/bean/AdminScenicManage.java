@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 public class AdminScenicManage implements Serializable {
 
-    private int id;
+    private long id;
     private String scenicName;
     private String adminWorkDay;
     private String adminWorkTime;
@@ -17,18 +17,18 @@ public class AdminScenicManage implements Serializable {
     public AdminScenicManage() {
     }
 
-    public AdminScenicManage(int id, String scenicName, String adminWorkDay, String adminWorkTime) {
+    public AdminScenicManage(long id, String scenicName, String adminWorkDay, String adminWorkTime) {
         this.id = id;
         this.scenicName = scenicName;
         this.adminWorkDay = adminWorkDay;
         this.adminWorkTime = adminWorkTime;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

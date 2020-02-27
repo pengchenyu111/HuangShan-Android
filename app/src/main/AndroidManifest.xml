@@ -28,7 +28,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon,android:theme,android:allowBackup,android:label,android:supportsRtl">
-        <activity android:name=".admin.activity.NotificationInfoActivity"></activity>
+        <activity android:name=".admin.activity.NotificationInfoActivity"/>
         <activity android:name=".admin.activity.WeatherH5Activity" />
         <activity android:name=".admin.activity.SendNotificationActivity" />
         <activity android:name=".admin.activity.AdminSelfInfoActivity" />

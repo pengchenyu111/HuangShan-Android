@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.example.huangshan.R;
 import com.example.huangshan.admin.fragment.PredictFragment;
-import com.example.huangshan.admin.fragment.NotificationFragment;
+import com.example.huangshan.admin.fragment.NotificationRootFragment;
 import com.example.huangshan.admin.fragment.ShowDataFragment;
 import com.example.huangshan.admin.fragment.AccountManageFragment;
 import com.example.huangshan.common.base.ActivityCollector;
@@ -84,7 +84,7 @@ public class AdminMainActivity extends BaseActivity implements BottomNavigationV
                 break;
             case R.id.admin_tab_notification:
                 if (fragment3 == null) {
-                    fragment3 = NotificationFragment.newInstance();
+                    fragment3 = NotificationRootFragment.newInstance();
                 }
                 switchFragment(fragmentNow, fragment3);
                 break;

@@ -6,7 +6,7 @@ import java.io.Serializable;
  * 管理员
  */
 public class Admin implements Serializable {
-    private int id;
+    private long id;
     private String account;
     private String password;
     private String name;
@@ -22,7 +22,7 @@ public class Admin implements Serializable {
     public Admin() {
     }
 
-    public Admin(int id, String account, String password, String name, String roleName, String phone, int workYear, String birth, int age, String sex, String introduction, String headIcon) {
+    public Admin(long id, String account, String password, String name, String roleName, String phone, int workYear, String birth, int age, String sex, String introduction, String headIcon) {
         this.id = id;
         this.account = account;
         this.password = password;
@@ -37,11 +37,11 @@ public class Admin implements Serializable {
         this.headIcon = headIcon;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
