@@ -91,6 +91,11 @@ dependencies {
     implementation 'com.nightonke:boommenu:2.1.1'
     //轮播图 banner
     implementation 'com.youth.banner:banner:1.4.10'
+    //下拉刷新https://github.com/Yalantis/Phoenix
+    implementation 'com.yalantis:phoenix:1.2.3'
+    //文字跑马灯
+    implementation 'com.gongwen:marqueelibrary:1.1.3'
+
 
 
 }

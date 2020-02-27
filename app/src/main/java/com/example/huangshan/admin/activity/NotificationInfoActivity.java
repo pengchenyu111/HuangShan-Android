@@ -30,6 +30,8 @@ public class NotificationInfoActivity extends BaseActivity implements View.OnCli
     TextView sendAdminName;
     @BindView(R.id.notification_info_sendTime)
     TextView sendTime;
+    @BindView(R.id.notification_info_isclose_view)
+    ImageView isCloseView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,9 @@ public class NotificationInfoActivity extends BaseActivity implements View.OnCli
         content.setText(notification.getContent());
         sendAdminName.setText(notification.getSendAdminName());
         sendTime.setText(notification.getSendTime());
+        if (notification.getIsClose().equals("1")){
+            isCloseView.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override

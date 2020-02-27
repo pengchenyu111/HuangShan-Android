@@ -132,7 +132,7 @@ public class AdminSelfInfoFragment extends Fragment implements View.OnClickListe
      */
     @SuppressLint("CheckResult")
     private void getManageSpots() {
-        int adminId = (int)preferences.getInt("id",1);
+        long adminId = (long) preferences.getLong("id",1);
         ScenicManageService scenicManageService = retrofit.create(ScenicManageService.class);
         scenicManageService.onesManages(adminId)
                 .compose(RxSchedulers.<ResultObj>io_main())

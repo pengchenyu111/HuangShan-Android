@@ -14,5 +14,5 @@ public interface ScenicManageService {
 
     //查询某个管理员管理的景点
     @GET("scenic_manages/ones/{adminId}")
-    Observable<ResultObj> onesManages(@Path("adminId") int adminId);
+    Observable<ResultObj> onesManages(@Path("adminId") long adminId);
 }

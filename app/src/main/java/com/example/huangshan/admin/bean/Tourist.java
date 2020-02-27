@@ -6,7 +6,7 @@ import java.io.Serializable;
  * 游客
  */
 public class Tourist implements Serializable {
-    private int id;
+    private long id;
     private String account;
     private String password;
     private String name;
@@ -20,7 +20,7 @@ public class Tourist implements Serializable {
     public Tourist() {
     }
 
-    public Tourist(int id, String account, String password, String name, String roleName, String phone, String birth, int age, String sex, String headIcon) {
+    public Tourist(long id, String account, String password, String name, String roleName, String phone, String birth, int age, String sex, String headIcon) {
         this.id = id;
         this.account = account;
         this.password = password;
@@ -33,11 +33,11 @@ public class Tourist implements Serializable {
         this.headIcon = headIcon;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

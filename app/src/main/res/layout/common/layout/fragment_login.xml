@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".common.ui.LoginFragment">
+    tools:context="com.example.huangshan.common.ui.LoginActivity">
 
 
     <LinearLayout
@@ -35,7 +35,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/admin_mapview_icon"
+                android:src="@mipmap/admin"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"/>
 
