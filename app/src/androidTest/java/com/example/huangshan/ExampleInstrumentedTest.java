@@ -1,6 +1,7 @@
 package com.example.huangshan;
 
 import android.content.Context;
+import android.util.Log;
 
 import androidx.test.InstrumentationRegistry;
 import androidx.test.runner.AndroidJUnit4;
@@ -17,6 +18,8 @@ import static org.junit.Assert.*;
  */
 @RunWith(AndroidJUnit4.class)
 public class ExampleInstrumentedTest {
+
+    private static final String TAG = "ExampleInstrumentedTest";
     @Test
     public void useAppContext() {
         // Context of the app under test.

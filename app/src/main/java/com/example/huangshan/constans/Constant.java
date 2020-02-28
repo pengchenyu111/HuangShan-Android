@@ -53,4 +53,8 @@ public class Constant {
     public static final String POI_PROVINCE_VIEW= "110203";
 //    风景名胜/风景名胜相关/观景点
     public static final String POI_VIEW_POINT= "110209";
+    //综合医院
+    public static final String POI_HOSPITAL = "090100";
+    //派出所
+    public static final String POI_POLICE_STATION = "130501";
 }
