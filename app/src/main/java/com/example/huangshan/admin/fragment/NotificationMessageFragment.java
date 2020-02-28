@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.huangshan.R;
 import com.example.huangshan.admin.activity.NotificationManageActivity;
+import com.example.huangshan.admin.activity.NotificationUrgentActivity;
 import com.example.huangshan.admin.activity.SendNotificationActivity;
 import com.example.huangshan.admin.bean.Notification;
 import com.example.huangshan.view.AdminNotificationBanner;
@@ -225,9 +226,8 @@ public class NotificationMessageFragment extends Fragment implements View.OnClic
                 startActivity(intent);
                 break;
             case R.id.notification_message_urgent_btn:
-                //Intent intent2 = new Intent(getActivity(), SendNotificationActivity.class);
-                // intent2.putExtras(bundle);
-                //startActivity(intent2);
+                Intent urgent = new Intent(getActivity(), NotificationUrgentActivity.class);
+                startActivity(urgent);
                 break;
             case R.id.notification_message_sign_btn:
                 showSuccessTips("今日您已签到成功!");
