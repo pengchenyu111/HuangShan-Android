@@ -1,12 +1,157 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
+    <com.yalantis.phoenix.PullToRefreshView
+        android:id="@+id/notification_feedback_refreshview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textColor="@color/blank"
-        android:text="hahahha"/>
+        android:layout_height="match_parent">
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/notification_feedback_scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:id="@+id/notification_message_head"
+                    android:layout_width="match_parent"
+                    android:layout_height="270dp"
+                    android:background="@drawable/gradient_feedback">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="20dp"
+                        android:layout_marginLeft="15dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="全心全意，游客至上!"
+                            android:textColor="@color/white"
+                            android:textSize="35dp"/>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="全天候处理游客反馈"
+                            android:textColor="@color/white"
+                            android:textSize="15dp" />
+                        <com.gongwen.marqueen.MarqueeView
+                            android:id="@+id/notification_feedback_marqueeView"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:layout_marginTop="40dp"
+                            android:layout_marginRight="15sp"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-20dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="1dp"
+                    app:cardPreventCornerOverlap="false"
+                    app:cardUseCompatPadding="true">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_margin="10dp">
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="投诉分类排行榜"
+                                android:textSize="15sp"/>
+                            <TextView
+                                android:id="@+id/notification_feedback_rank_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="10dp"
+                                android:text="1."/>
+                            <TextView
+                                android:id="@+id/notification_feedback_rank_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="2."/>
+                            <TextView
+                                android:id="@+id/notification_feedback_rank_3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="3."/>
+                            <TextView
+                                android:id="@+id/notification_feedback_rank_4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="4."/>
+                            <TextView
+                                android:id="@+id/notification_feedback_rank_5"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="5."/>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:text="今日投诉量"
+                                android:textSize="15sp"/>
+                            <com.example.huangshan.view.TextCircleView
+                                android:layout_marginTop="20dp"
+                                android:id="@+id/notification_feedback_today_count"
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:textColor="@color/red"
+                                android:layout_gravity="center"
+                                android:text="0"
+                                android:textSize="40dp"
+                                android:gravity="center"/>
+                        </LinearLayout>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <Button
+                    android:id="@+id/notification_feedback_handle_btn"
+                    style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/btn_long_radius_gradient_pink"
+                    android:text="处理投诉"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"/>
+            </LinearLayout>
+
+
+
+
+        </androidx.core.widget.NestedScrollView>
+    </com.yalantis.phoenix.PullToRefreshView>
 
 </LinearLayout>

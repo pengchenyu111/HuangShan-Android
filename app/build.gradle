@@ -31,12 +31,12 @@ android {
         main {
             jniLibs.srcDirs = ['libs']
             res.srcDirs =
-                [
-                    'src/main/res/layout/admin',
-                    'src/main/res/layout/tourist',
-                    'src/main/res/layout/common',
-                    'src/main/res'
-                ]
+                    [
+                            'src/main/res/layout/admin',
+                            'src/main/res/layout/tourist',
+                            'src/main/res/layout/common',
+                            'src/main/res'
+                    ]
         }
     }
 }
@@ -95,7 +95,6 @@ dependencies {
     implementation 'com.yalantis:phoenix:1.2.3'
     //文字跑马灯
     implementation 'com.gongwen:marqueelibrary:1.1.3'
-
 
 
 }

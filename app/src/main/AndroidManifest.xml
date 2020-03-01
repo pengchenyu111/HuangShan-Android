@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.huangshan">
 
-    <uses-permission android:name="android.permission.FLASHLIGHT" /> <!--通知灯权限-->
-    <uses-permission android:name="android.permission.VIBRATE" /> <!--振动权限-->
+    <uses-permission android:name="android.permission.FLASHLIGHT" /> <!-- 通知灯权限 -->
+    <uses-permission android:name="android.permission.VIBRATE" /> <!-- 振动权限 -->
     <uses-permission android:name="android.permission.INTERNET" /> <!-- 网络访问权限 -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 允许程序设置内置sd卡的写权限 -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" /> <!-- 允许程序设置内置sd卡的读权限 -->
@@ -15,7 +15,7 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" /> <!-- 允许程序访问CellID或WiFi热点来获取粗略的位置 -->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" /> <!-- 允许访问GPS定位 -->
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" /> <!-- 用于申请调用A-GPS模块 -->
-    <uses-permission android:name="android.permission.BLUETOOTH" /><!-- 用于申请获取蓝牙信息进行室内定位 -->
+    <uses-permission android:name="android.permission.BLUETOOTH" /> <!-- 用于申请获取蓝牙信息进行室内定位 -->
     <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
 
     <application
@@ -28,13 +28,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon,android:theme,android:allowBackup,android:label,android:supportsRtl">
-        <activity android:name=".admin.activity.NotificationInfoActivity"/>
+        <activity android:name=".admin.activity.ComplaintInfoActivity"/>
+        <activity android:name=".admin.activity.HandleComplaintActivity"></activity>
+        <activity android:name=".admin.activity.NotificationInfoActivity" />
         <activity android:name=".admin.activity.WeatherH5Activity" />
         <activity android:name=".admin.activity.SendNotificationActivity" />
         <activity android:name=".admin.activity.AdminSelfInfoActivity" />
         <activity android:name=".admin.activity.UserFeedbackManageActivity" />
         <activity android:name=".admin.activity.NotificationManageActivity" />
-        <activity android:name=".admin.activity.NotificationUrgentActivity"/>
+        <activity android:name=".admin.activity.NotificationUrgentActivity" />
         <activity
             android:name=".common.ui.SplashActivity"
             android:theme="@style/SplashActivityTheme">
@@ -59,7 +61,7 @@
 
         <activity android:name=".admin.activity.WeatherActivity" />
         <activity android:name=".common.base.BaseActivity" />
-        <activity android:name=".common.ui.LoginActivity"/>
+        <activity android:name=".common.ui.LoginActivity" />
         <activity android:name=".admin.activity.AdminMainActivity" />
     </application>
 
