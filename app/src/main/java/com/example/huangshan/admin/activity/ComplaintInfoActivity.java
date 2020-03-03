@@ -101,6 +101,7 @@ public class ComplaintInfoActivity extends BaseActivity implements View.OnClickL
         Glide.with(this)
                 .load(complaint.getEvidencePhoto())
                 .placeholder(R.mipmap.loading_1)
+                .error(R.mipmap.loading_fail)
                 .into(evidencePhoto);
         complainantNameView.setText(complaint.getComplainantName());
         complainantPhoneView.setText(complaint.getComplainantPhone());
