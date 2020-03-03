@@ -35,7 +35,7 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/admin"
+                android:src="@mipmap/notification_icon"
                 android:layout_gravity="center"
                 android:layout_marginTop="20dp"/>
 
@@ -151,7 +151,7 @@
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginTop="20dp"
-            android:background="@drawable/shape"
+            android:background="@drawable/btn_selector_login"
             android:text="登录"
             android:textColor="@color/white"
             android:textSize="18dp"/>

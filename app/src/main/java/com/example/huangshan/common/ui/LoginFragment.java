@@ -4,6 +4,7 @@ package com.example.huangshan.common.ui;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -33,6 +34,7 @@ import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import io.reactivex.functions.Consumer;
 import okhttp3.MediaType;
 import okhttp3.RequestBody;
@@ -56,6 +58,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
     private View view;
     public RetrofitManager retrofitManager = new RetrofitManager();
     public Gson gson = new Gson();
+
+    private SweetAlertDialog pDialog;
 
     public LoginFragment() {
         // Required empty public constructor
@@ -89,6 +93,12 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
             if (account.isEmpty() || password.isEmpty()){
                 Toast.makeText(getActivity(),"账号或密码不能为空！",Toast.LENGTH_SHORT).show();
             }else {
+                //先显示加载框
+                pDialog = new SweetAlertDialog(getActivity(), SweetAlertDialog.PROGRESS_TYPE);
+                pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
+                pDialog.setTitleText("Loading");
+                pDialog.setCancelable(false);
+                pDialog.show();
                 //往服务器发送登录请求
                 loginRequest(account, password);
             }
@@ -120,8 +130,10 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
                                public void accept(ResultObj resultObj) throws Exception {
                                    if (resultObj.getCode() == ResultCode.LOGIN_DATA_WRONG){
                                        //账号或密码错误
+                                       pDialog.dismissWithAnimation();
                                        Toast.makeText(getActivity(),resultObj.getMessage(),Toast.LENGTH_SHORT).show();
                                    }else {
+                                       pDialog.dismissWithAnimation();
                                        Gson gson = new Gson();
                                        String data = gson.toJson(resultObj.getData());
                                        if (checkLoginRole(resultObj)){
