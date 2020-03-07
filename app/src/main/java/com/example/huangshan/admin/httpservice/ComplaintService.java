@@ -1,4 +1,4 @@
-package com.example.huangshan.admin.service;
+package com.example.huangshan.admin.httpservice;
 
 import com.example.huangshan.http.ResultObj;
 

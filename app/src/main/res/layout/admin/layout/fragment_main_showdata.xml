@@ -16,41 +16,20 @@
           android:layout_width="match_parent"
           android:layout_height="match_parent"
           android:layout_margin="10dp">
-
-        <com.github.mikephil.charting.charts.LineChart
-            android:id="@+id/showdata_line_chart"
-            android:layout_width="match_parent"
-            android:layout_height="250dp">
-        </com.github.mikephil.charting.charts.LineChart>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_marginBottom="8dp"
-            android:layout_marginTop="8dp"
-            android:background="@android:color/darker_gray" />
-
-        <com.github.mikephil.charting.charts.BarChart
-            android:id="@+id/showdata_bar_chart"
-            android:layout_width="match_parent"
-            android:layout_height="350dp">
-
-        </com.github.mikephil.charting.charts.BarChart>
-
       </LinearLayout>
   </androidx.core.widget.NestedScrollView>
 
-  <com.nightonke.boommenu.BoomMenuButton
-      android:id="@+id/showdata_boommenubtn"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:layout_alignParentBottom="true"
-      android:layout_alignParentRight="true"
-      android:layout_alignParentEnd="true"
-      app:bmb_autoHide="false"
-      app:bmb_buttonEnum="ham"
-      app:bmb_buttonPlaceEnum="buttonPlace_ham_1"
-      app:bmb_piecePlaceEnum="piecePlace_ham_1" />
+  <!--<com.nightonke.boommenu.BoomMenuButton-->
+      <!--android:id="@+id/showdata_boommenubtn"-->
+      <!--android:layout_width="wrap_content"-->
+      <!--android:layout_height="wrap_content"-->
+      <!--android:layout_alignParentBottom="true"-->
+      <!--android:layout_alignParentRight="true"-->
+      <!--android:layout_alignParentEnd="true"-->
+      <!--app:bmb_autoHide="false"-->
+      <!--app:bmb_buttonEnum="ham"-->
+      <!--app:bmb_buttonPlaceEnum="buttonPlace_ham_1"-->
+      <!--app:bmb_piecePlaceEnum="piecePlace_ham_1" />-->
 
 
 

@@ -24,13 +24,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.bumptech.glide.signature.ObjectKey;
 import com.example.huangshan.R;
 import com.example.huangshan.admin.adapter.OnesScenicManageAdapter;
-import com.example.huangshan.admin.bean.Admin;
 import com.example.huangshan.admin.bean.AdminScenicManage;
-import com.example.huangshan.admin.service.AdminService;
-import com.example.huangshan.admin.service.ScenicManageService;
+import com.example.huangshan.admin.httpservice.AdminService;
+import com.example.huangshan.admin.httpservice.ScenicManageService;
 import com.example.huangshan.common.service.FileService;
 import com.example.huangshan.constans.ResultCode;
 import com.example.huangshan.http.ResultObj;
@@ -48,7 +46,6 @@ import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import de.hdodenhof.circleimageview.CircleImageView;
 import io.reactivex.functions.Consumer;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;

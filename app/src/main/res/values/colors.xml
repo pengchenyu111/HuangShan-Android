@@ -18,6 +18,7 @@
     <color name="divider_line">#F0F0F0</color>
     <color name="divider_line_deep">#EBEBEB</color>
     <color name="blank">#BC000000</color>
+    <color name="deep_blank">#000000</color>
 
     <color name="warning">#FF6767</color>
     <color name="tips">#ffffbb33</color>

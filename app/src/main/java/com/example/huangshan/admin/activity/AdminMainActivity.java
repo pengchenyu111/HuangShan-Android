@@ -2,6 +2,7 @@ package com.example.huangshan.admin.activity;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
@@ -51,6 +52,13 @@ public class AdminMainActivity extends BaseActivity implements BottomNavigationV
         ButterKnife.bind(this);
         //设置响应
         bottomNavigationView.setOnNavigationItemSelectedListener(this::onNavigationItemSelected);
+
+        //先加载默认首页
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        ShowDataFragment showDataFragment = new ShowDataFragment();
+        transaction.add(R.id.admin_main_container,showDataFragment);
+        transaction.commit();
     }
 
     /**

@@ -1,6 +1,8 @@
 package com.example.huangshan.admin.bean;
 
-public class HourlyNum {
+import java.io.Serializable;
+
+public class HourlyNum implements Serializable {
 
     private String dateName;
     private String hour;

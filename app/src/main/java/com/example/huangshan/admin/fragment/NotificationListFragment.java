@@ -14,28 +14,20 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.recyclerview.widget.RecyclerView.OnScrollListener;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.huangshan.R;
 import com.example.huangshan.admin.adapter.NotificationListAdapter;
-import com.example.huangshan.admin.bean.Admin;
 import com.example.huangshan.admin.bean.Notification;
-import com.example.huangshan.admin.service.NotificationService;
-import com.example.huangshan.constans.Constant;
+import com.example.huangshan.admin.httpservice.NotificationService;
 import com.example.huangshan.constans.ResultCode;
 import com.example.huangshan.http.ResultObj;
 import com.example.huangshan.http.RetrofitManager;
 import com.example.huangshan.http.RxSchedulers;
-import com.example.huangshan.utils.HttpUtil;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.yalantis.phoenix.PullToRefreshView;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

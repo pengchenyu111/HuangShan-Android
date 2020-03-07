@@ -26,7 +26,7 @@ import com.daimajia.swipe.adapters.RecyclerSwipeAdapter;
 import com.example.huangshan.R;
 import com.example.huangshan.admin.activity.NotificationInfoActivity;
 import com.example.huangshan.admin.bean.Notification;
-import com.example.huangshan.admin.service.NotificationService;
+import com.example.huangshan.admin.httpservice.NotificationService;
 import com.example.huangshan.constans.ResultCode;
 import com.example.huangshan.http.ResultObj;
 import com.example.huangshan.http.RetrofitManager;
