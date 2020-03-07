@@ -1,16 +1,194 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--4个导航栏之一：预测-->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.heweather.plugin.view.LeftLargeView
-        android:id="@+id/heweather_plugin_ll_view"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="25dp"/>
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.heweather.plugin.view.LeftLargeView
+                android:id="@+id/heweather_plugin_ll_view"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="30dp" >
+            </com.heweather.plugin.view.LeftLargeView>
+
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="客流预测"
+                        android:textSize="25sp"
+                        android:textColor="@color/deep_blank" />
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="今日预测"
+                                android:textSize="15sp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:layout_marginTop="15dp"/>
+                            <com.example.huangshan.view.TextCircleView
+                                android:id="@+id/passenger_flow_predict_num"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="15dp"
+                                android:gravity="center"
+                                android:text="0"
+                                android:textSize="23dp" />
+                        </LinearLayout>
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="3">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="拥挤程度"
+                                android:textSize="15sp"
+                                android:layout_gravity="center"
+                                android:gravity="center"
+                                android:layout_marginTop="15dp"/>
+                            <com.example.huangshan.view.TextCircleView
+                                android:id="@+id/passenger_flow_predict_level"
+                                android:layout_width="80dp"
+                                android:layout_height="80dp"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="15dp"
+                                android:gravity="center"
+                                android:text="通畅"
+                                android:textSize="23dp"
+/>
+                        </LinearLayout>
+                        <FrameLayout
+                            android:layout_width="0dp"
+                            android:layout_height="match_parent"
+                            android:layout_weight="4">
+                            <ImageView
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_gravity="center|bottom"
+                                android:layout_marginBottom="10dp"
+                                android:src="@mipmap/notification_icon"/>
+                        </FrameLayout>
+                    </LinearLayout>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="近日预测偏差率"
+                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:layout_marginTop="30dp"/>
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/passenger_flow_diviation_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp">
+
+                </com.github.mikephil.charting.charts.BarChart>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="35dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="客流监测"
+                    android:textSize="25sp"
+                    android:textColor="@color/deep_blank" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="近日每日客流总数"
+                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:layout_marginTop="30dp"/>
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/passenger_flow_bar_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp">
+                </com.github.mikephil.charting.charts.BarChart>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@android:color/darker_gray" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="小时客流数据"
+                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:layout_marginTop="30dp"/>
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/passenger_flow_line_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp">
+                </com.github.mikephil.charting.charts.LineChart>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:layout_marginBottom="8dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@android:color/darker_gray" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="8/9点前客流占比"
+                    android:textSize="15sp"
+                    android:gravity="center"
+                    android:layout_marginTop="30dp"/>
+                <com.github.mikephil.charting.charts.PieChart
+                    android:id="@+id/passenger_flow_pie_chart"
+                    android:layout_width="match_parent"
+                    android:layout_height="350dp">
+
+                </com.github.mikephil.charting.charts.PieChart>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
 
 </LinearLayout>

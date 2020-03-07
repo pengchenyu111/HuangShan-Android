@@ -17,7 +17,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.huangshan.R;
-import com.example.huangshan.admin.service.AdminService;
+import com.example.huangshan.admin.httpservice.AdminService;
 import com.example.huangshan.constans.ResultCode;
 import com.example.huangshan.http.ResultObj;
 import com.example.huangshan.http.RetrofitManager;

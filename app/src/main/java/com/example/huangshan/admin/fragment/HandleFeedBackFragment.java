@@ -20,7 +20,7 @@ import androidx.fragment.app.Fragment;
 import com.example.huangshan.R;
 import com.example.huangshan.admin.activity.HandleComplaintActivity;
 import com.example.huangshan.admin.bean.Complaint;
-import com.example.huangshan.admin.service.ComplaintService;
+import com.example.huangshan.admin.httpservice.ComplaintService;
 import com.example.huangshan.constans.ResultCode;
 import com.example.huangshan.http.ResultObj;
 import com.example.huangshan.http.RetrofitManager;

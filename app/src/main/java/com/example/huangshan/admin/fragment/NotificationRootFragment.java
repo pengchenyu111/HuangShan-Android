@@ -13,23 +13,10 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
-import android.widget.Toast;
 
 import com.example.huangshan.admin.adapter.NotificationPagerAdapter;
-import com.example.huangshan.constans.Constant;
 import com.example.huangshan.R;
-import com.example.huangshan.admin.activity.NotificationManageActivity;
-//import com.example.huangshan.admin.activity.SendNotificationActivity;
-import com.example.huangshan.admin.activity.UserFeedbackManageActivity;
-import com.example.huangshan.admin.bean.Admin;
-import com.example.huangshan.utils.GlideImageLoader;
 import com.google.android.material.tabs.TabLayout;
-import com.yalantis.phoenix.PullToRefreshView;
-import com.youth.banner.Banner;
-import com.youth.banner.BannerConfig;
-import com.youth.banner.Transformer;
-import com.youth.banner.listener.OnBannerListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;

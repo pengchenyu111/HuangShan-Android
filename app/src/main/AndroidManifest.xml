@@ -34,7 +34,6 @@
         <activity android:name=".admin.activity.WeatherH5Activity" />
         <activity android:name=".admin.activity.SendNotificationActivity" />
         <activity android:name=".admin.activity.AdminSelfInfoActivity" />
-        <activity android:name=".admin.activity.UserFeedbackManageActivity" />
         <activity android:name=".admin.activity.NotificationManageActivity" />
         <activity android:name=".admin.activity.NotificationUrgentActivity" />
         <activity

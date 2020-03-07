@@ -20,7 +20,7 @@ import com.example.huangshan.admin.activity.NotificationUrgentActivity;
 import com.example.huangshan.admin.activity.SendNotificationActivity;
 import com.example.huangshan.admin.bean.Notification;
 import com.example.huangshan.view.AdminNotificationBanner;
-import com.example.huangshan.admin.service.NotificationService;
+import com.example.huangshan.admin.httpservice.NotificationService;
 import com.example.huangshan.constans.ResultCode;
 import com.example.huangshan.http.ResultObj;
 import com.example.huangshan.http.RetrofitManager;

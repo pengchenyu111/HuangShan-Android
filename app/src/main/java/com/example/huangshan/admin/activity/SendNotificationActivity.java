@@ -27,15 +27,13 @@ import android.widget.Toast;
 import androidx.core.app.NotificationCompat;
 
 import com.example.huangshan.admin.bean.Notification;
-import com.example.huangshan.admin.service.NotificationService;
+import com.example.huangshan.admin.httpservice.NotificationService;
 import com.example.huangshan.common.base.BaseActivity;
 import com.example.huangshan.R;
-import com.example.huangshan.admin.bean.Admin;
 import com.example.huangshan.constans.ResultCode;
 import com.example.huangshan.http.ResultObj;
 import com.example.huangshan.http.RetrofitManager;
 import com.example.huangshan.http.RxSchedulers;
-import com.google.android.material.tabs.TabLayout;
 import com.google.gson.Gson;
 
 import java.io.File;

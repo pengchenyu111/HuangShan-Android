@@ -1,73 +1,141 @@
 package com.example.huangshan.admin.bean;
 
 
-public class DailyNum {
+import java.io.Serializable;
 
-    private String dataName;
-    private String dataWeek;
-    private int totalNum;
-    private int eightNum;
-    private int NineNum;
+public class DailyNum implements Serializable {
+
+    private String dateName;
+    private String dateWeek;
+    private int predictNum;
+    private int todayEightNum;
+    private int todayNineNum;
+    private int todayTotalNum;
+    private double deviationRate;
+    private int orderNum;
+    private String weatherName;
+    private String moduleName;
+    private String description;
 
     public DailyNum() {
     }
 
-    public DailyNum(String dataName, String dataWeek, int totalNum, int eightNum, int nineNum) {
-        this.dataName = dataName;
-        this.dataWeek = dataWeek;
-        this.totalNum = totalNum;
-        this.eightNum = eightNum;
-        NineNum = nineNum;
+    public DailyNum(String dateName, String dateWeek, int predictNum, int todayEightNum, int todayNineNum, int todayTotalNum, double deviationRate, int orderNum, String weatherName, String moduleName, String description) {
+        this.dateName = dateName;
+        this.dateWeek = dateWeek;
+        this.predictNum = predictNum;
+        this.todayEightNum = todayEightNum;
+        this.todayNineNum = todayNineNum;
+        this.todayTotalNum = todayTotalNum;
+        this.deviationRate = deviationRate;
+        this.orderNum = orderNum;
+        this.weatherName = weatherName;
+        this.moduleName = moduleName;
+        this.description = description;
     }
 
-    public String getDataName() {
-        return dataName;
+    public String getDateName() {
+        return dateName;
     }
 
-    public void setDataName(String dataName) {
-        this.dataName = dataName;
+    public void setDateName(String dateName) {
+        this.dateName = dateName;
     }
 
-    public String getDataWeek() {
-        return dataWeek;
+    public String getDateWeek() {
+        return dateWeek;
     }
 
-    public void setDataWeek(String dataWeek) {
-        this.dataWeek = dataWeek;
+    public void setDateWeek(String dateWeek) {
+        this.dateWeek = dateWeek;
     }
 
-    public int getTotalNum() {
-        return totalNum;
+    public int getPredictNum() {
+        return predictNum;
     }
 
-    public void setTotalNum(int totalNum) {
-        this.totalNum = totalNum;
+    public void setPredictNum(int predictNum) {
+        this.predictNum = predictNum;
     }
 
-    public int getEightNum() {
-        return eightNum;
+    public int getTodayEightNum() {
+        return todayEightNum;
     }
 
-    public void setEightNum(int eightNum) {
-        this.eightNum = eightNum;
+    public void setTodayEightNum(int todayEightNum) {
+        this.todayEightNum = todayEightNum;
     }
 
-    public int getNineNum() {
-        return NineNum;
+    public int getTodayNineNum() {
+        return todayNineNum;
     }
 
-    public void setNineNum(int nineNum) {
-        NineNum = nineNum;
+    public void setTodayNineNum(int todayNineNum) {
+        this.todayNineNum = todayNineNum;
+    }
+
+    public int getTodayTotalNum() {
+        return todayTotalNum;
+    }
+
+    public void setTodayTotalNum(int todayTotalNum) {
+        this.todayTotalNum = todayTotalNum;
+    }
+
+    public double getDeviationRate() {
+        return deviationRate;
+    }
+
+    public void setDeviationRate(double deviationRate) {
+        this.deviationRate = deviationRate;
+    }
+
+    public int getOrderNum() {
+        return orderNum;
+    }
+
+    public void setOrderNum(int orderNum) {
+        this.orderNum = orderNum;
+    }
+
+    public String getWeatherName() {
+        return weatherName;
+    }
+
+    public void setWeatherName(String weatherName) {
+        this.weatherName = weatherName;
+    }
+
+    public String getModuleName() {
+        return moduleName;
+    }
+
+    public void setModuleName(String moduleName) {
+        this.moduleName = moduleName;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     @Override
     public String toString() {
         return "DailyNum{" +
-                "dataName='" + dataName + '\'' +
-                ", dataWeek='" + dataWeek + '\'' +
-                ", totalNum=" + totalNum +
-                ", eightNum=" + eightNum +
-                ", NineNum=" + NineNum +
+                "dateName='" + dateName + '\'' +
+                ", dateWeek='" + dateWeek + '\'' +
+                ", predictNum=" + predictNum +
+                ", todayEightNum=" + todayEightNum +
+                ", todayNineNum=" + todayNineNum +
+                ", todayTotalNum=" + todayTotalNum +
+                ", deviationRate=" + deviationRate +
+                ", orderNum=" + orderNum +
+                ", weatherName='" + weatherName + '\'' +
+                ", moduleName='" + moduleName + '\'' +
+                ", description='" + description + '\'' +
                 '}';
     }
 }

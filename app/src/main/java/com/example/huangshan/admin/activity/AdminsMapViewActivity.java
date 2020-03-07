@@ -32,7 +32,7 @@ import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.bumptech.glide.Glide;
 import com.example.huangshan.admin.bean.ScenicManage;
-import com.example.huangshan.admin.service.ScenicManageService;
+import com.example.huangshan.admin.httpservice.ScenicManageService;
 import com.example.huangshan.common.base.BaseActivity;
 import com.example.huangshan.constans.Constant;
 import com.example.huangshan.R;
