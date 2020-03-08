@@ -744,9 +744,9 @@ public class PredictFragment extends Fragment implements View.OnClickListener, O
         leftLargeView.addRainIcon(rightBottomLayout, 14);
         //添加降雨描述到右下布局
         leftLargeView.addRainDetail(rightBottomLayout, 14, Color.WHITE);
-        //添加预警图标到右上布局
+        //添加预警图标到右下布局
         leftLargeView.addAlarmIcon(rightBottomLayout, 14);
-        //添加预警描述到右上布局
+        //添加预警描述到右下布局
         leftLargeView.addAlarmTxt(rightBottomLayout, 14);
 
         //设置控件的对齐方式，默认居中

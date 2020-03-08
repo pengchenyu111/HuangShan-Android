@@ -36,6 +36,9 @@
         <activity android:name=".admin.activity.AdminSelfInfoActivity" />
         <activity android:name=".admin.activity.NotificationManageActivity" />
         <activity android:name=".admin.activity.NotificationUrgentActivity" />
+        <activity android:name=".admin.activity.HomePageMapActivity"/>
+        <activity android:name=".admin.activity.HomePageTicketActivity"/>
+        <activity android:name=".admin.activity.HomePageRuleActivity"/>
         <activity
             android:name=".common.ui.SplashActivity"
             android:theme="@style/SplashActivityTheme">

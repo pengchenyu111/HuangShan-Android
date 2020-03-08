@@ -59,6 +59,7 @@ public class AdminMainActivity extends BaseActivity implements BottomNavigationV
         ShowDataFragment showDataFragment = new ShowDataFragment();
         transaction.add(R.id.admin_main_container,showDataFragment);
         transaction.commit();
+        fragmentNow = showDataFragment;
     }
 
     /**
@@ -128,6 +129,12 @@ public class AdminMainActivity extends BaseActivity implements BottomNavigationV
             // 隐藏当前的fragment，显示下一个
             transaction.hide(from).show(to).commit();
         }
+//        FragmentTransaction transaction=getSupportFragmentManager().beginTransaction();
+//        transaction.hide(from);
+//        if (!to.isAdded()){
+//            transaction.add(R.id.admin_main_container, to);
+//        }
+//        transaction.show(to).commitAllowingStateLoss();
         fragmentNow = to;
     }
 
