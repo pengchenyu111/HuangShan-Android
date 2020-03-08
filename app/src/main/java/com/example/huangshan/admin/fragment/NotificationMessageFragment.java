@@ -152,52 +152,6 @@ public class NotificationMessageFragment extends Fragment implements View.OnClic
         notificationBannerView.startFlipping();
     }
 
-//    private void bannerSettings() {
-//        //github地址：https://github.com/youth5201314/banner
-//
-//        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
-//        //设置图片加载器
-//        banner.setImageLoader(new GlideImageLoader());
-//        //设置图片集合
-//        banner.setImages(Arrays.asList(Constant.URL_BANNER));
-//        //设置banner动画效果
-//        banner.setBannerAnimation(Transformer.Default);
-//        //设置标题集合（当banner样式有显示title时）
-//        //banner.setBannerTitles(titles);
-//        //设置自动轮播，默认为true
-//        banner.isAutoPlay(true);
-//        //设置轮播时间
-//        banner.setDelayTime(2000);
-//        //设置指示器位置（当banner模式中有指示器时）
-//        banner.setIndicatorGravity(BannerConfig.CENTER);
-//        //banner设置方法全部调用完毕时最后调用
-//
-//        //添加监听器
-//        banner.setOnBannerListener(new OnBannerListener() {
-//            @Override
-//            public void OnBannerClick(int position) {
-//                switch (position){
-//                    case 0:
-//                        Toast.makeText(getActivity(),"点击了图片"+position,Toast.LENGTH_SHORT).show();
-//                        break;
-//                    case 1:
-//                        Toast.makeText(getActivity(),"点击了图片"+position,Toast.LENGTH_SHORT).show();
-//                        break;
-//                    case 2:
-//                        Toast.makeText(getActivity(),"点击了图片"+position,Toast.LENGTH_SHORT).show();
-//                        break;
-//                    case 3:
-//                        Toast.makeText(getActivity(),"点击了图片"+position,Toast.LENGTH_SHORT).show();
-//                        break;
-//                    case 4:
-//                        Toast.makeText(getActivity(),"点击了图片"+position,Toast.LENGTH_SHORT).show();
-//                        break;
-//                    default:break;
-//                }
-//            }
-//        });
-//        banner.start();
-//    }
 
     /**
      * 成功提示框

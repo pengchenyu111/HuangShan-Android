@@ -1,68 +1,44 @@
 package com.example.huangshan.admin.fragment;
 
-
-import android.annotation.SuppressLint;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
+
 import androidx.fragment.app.Fragment;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.DatePicker;
+import android.widget.ImageButton;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.huangshan.admin.httpservice.DailyNumService;
-import com.example.huangshan.admin.httpservice.HourlyNumService;
-import com.example.huangshan.constans.Constant;
 import com.example.huangshan.R;
-import com.example.huangshan.admin.bean.DailyNum;
-import com.example.huangshan.admin.bean.HourlyNum;
-import com.example.huangshan.admin.bean.OneDayHourlyNum;
-import com.example.huangshan.builder.BuilderManager;
-import com.example.huangshan.constans.ResultCode;
-import com.example.huangshan.http.ResultObj;
+import com.example.huangshan.admin.activity.HomePageMapActivity;
+import com.example.huangshan.admin.activity.HomePageRuleActivity;
+import com.example.huangshan.admin.activity.HomePageTicketActivity;
+import com.example.huangshan.admin.activity.WeatherH5Activity;
+import com.example.huangshan.constans.Constant;
 import com.example.huangshan.http.RetrofitManager;
-import com.example.huangshan.http.RxSchedulers;
-import com.example.huangshan.utils.HttpUtil;
-import com.github.mikephil.charting.charts.BarChart;
-import com.github.mikephil.charting.charts.LineChart;
-import com.github.mikephil.charting.components.AxisBase;
-import com.github.mikephil.charting.components.Legend;
-import com.github.mikephil.charting.components.XAxis;
-import com.github.mikephil.charting.components.YAxis;
-import com.github.mikephil.charting.data.BarData;
-import com.github.mikephil.charting.data.BarDataSet;
-import com.github.mikephil.charting.data.BarEntry;
-import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.github.mikephil.charting.data.LineDataSet;
-import com.github.mikephil.charting.formatter.ValueFormatter;
-import com.github.mikephil.charting.highlight.Highlight;
-import com.github.mikephil.charting.interfaces.datasets.IBarDataSet;
-import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
-import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
-import com.github.mikephil.charting.model.GradientColor;
+import com.example.huangshan.utils.GlideImageLoader;
+import com.example.huangshan.utils.StatusBarUtil;
+
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
-import com.nightonke.boommenu.BoomButtons.BoomButton;
-import com.nightonke.boommenu.BoomButtons.HamButton;
-import com.nightonke.boommenu.BoomMenuButton;
-import com.nightonke.boommenu.OnBoomListenerAdapter;
+import com.heweather.plugin.view.HeContent;
+import com.heweather.plugin.view.HeWeatherConfig;
+import com.heweather.plugin.view.HorizonView;
+import com.heweather.plugin.view.LeftLargeView;
+import com.youth.banner.Banner;
+import com.youth.banner.BannerConfig;
+import com.youth.banner.Transformer;
+import com.youth.banner.listener.OnBannerListener;
 
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+
+import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -75,6 +51,14 @@ import retrofit2.Retrofit;
 public class ShowDataFragment extends Fragment implements View.OnClickListener{
 
 //    @BindView(R.id.showdata_boommenubtn) BoomMenuButton showdataBoomMenuBtn;
+
+    @BindView(R.id.heweather_plugin_main_view) HorizonView weatherInfo;
+    @BindView(R.id.home_page_admin_poetry) TextView poetryView;
+    @BindView(R.id.home_page_admin_banner) Banner banner;
+    @BindView(R.id.home_page_admin_map) ImageButton mapViewBtn;
+    @BindView(R.id.home_page_admin_weather) ImageButton weatherBtn;
+    @BindView(R.id.home_page_admin_ticket) ImageButton ticketBtn;
+    @BindView(R.id.home_page_admin_rule) ImageButton ruleBtn;
 
     private static final String TAG = "ShowDataFragment";
     //网络
@@ -105,6 +89,9 @@ public class ShowDataFragment extends Fragment implements View.OnClickListener{
         //初始化网络请求
         retrofitManager.init();
         retrofit = retrofitManager.getRetrofit();
+        //初始化和风天气
+        HeWeatherConfig.init(Constant.HEFENGWEATHER_PLUGIN_kEY,Constant.HEFENGWEATHER_LOCATION_HUANGSHAN_GUANGMINGDING);
+
     }
 
     @Override
@@ -113,8 +100,95 @@ public class ShowDataFragment extends Fragment implements View.OnClickListener{
         View view = inflater.inflate(R.layout.fragment_main_showdata,container,false);
         //绑定控件
         ButterKnife.bind(this,view);
+        //设置响应
+        mapViewBtn.setOnClickListener(this);
+        weatherBtn.setOnClickListener(this);
+        ticketBtn.setOnClickListener(this);
+        ruleBtn.setOnClickListener(this);
+        //状态栏透明
+        StatusBarUtil.transparentAndDark(getActivity());
+        //显示天气
+        showWeather();
+        //显示诗句
+        showPoetry();
+        //轮播
+        bannerSettings();
 
         return view;
+    }
+
+    /**
+     * 图片轮播设置
+     */
+    private void bannerSettings() {
+        //github地址：https://github.com/youth5201314/banner
+
+        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
+        //设置图片加载器
+        banner.setImageLoader(new GlideImageLoader());
+        //设置图片集合
+        banner.setImages(Arrays.asList(Constant.ADMIN_BANNER_URL));
+        //设置banner动画效果
+        banner.setBannerAnimation(Transformer.Default);
+        //设置标题集合（当banner样式有显示title时）
+        //banner.setBannerTitles(titles);
+        //设置自动轮播，默认为true
+        banner.isAutoPlay(true);
+        //设置轮播时间
+        banner.setDelayTime(2000);
+        //设置指示器位置（当banner模式中有指示器时）
+        banner.setIndicatorGravity(BannerConfig.CENTER);
+        //banner设置方法全部调用完毕时最后调用
+
+        //添加监听器
+        banner.setOnBannerListener(new OnBannerListener() {
+            @Override
+            public void OnBannerClick(int position) {
+                switch (position){
+                    case 0:
+                        Toast.makeText(getActivity(),"点击了图片"+position,Toast.LENGTH_SHORT).show();
+                        break;
+                    case 1:
+                        Toast.makeText(getActivity(),"点击了图片"+position,Toast.LENGTH_SHORT).show();
+                        break;
+                    case 2:
+                        Toast.makeText(getActivity(),"点击了图片"+position,Toast.LENGTH_SHORT).show();
+                        break;
+                    case 3:
+                        Toast.makeText(getActivity(),"点击了图片"+position,Toast.LENGTH_SHORT).show();
+                        break;
+                    case 4:
+                        Toast.makeText(getActivity(),"点击了图片"+position,Toast.LENGTH_SHORT).show();
+                        break;
+                    default:break;
+                }
+            }
+        });
+        banner.start();
+    }
+
+    /**
+     * 显示诗句
+     */
+    private void showPoetry() {
+        int index = (int)(Math.random()*10);
+        String poetry = Constant.POETRY[index];
+        poetryView.setText(poetry);
+    }
+
+    /**
+     * 显示天气
+     */
+    private void showWeather() {
+        weatherInfo.setDefaultBack(false);
+        //设置布局的背景圆角角度（单位：dp），颜色，边框宽度（单位：px），边框颜色
+        weatherInfo.setStroke(10, Color.TRANSPARENT, 1, Color.TRANSPARENT);
+        weatherInfo.addWeatherIcon(60);
+        weatherInfo.addTemp(16, Color.WHITE);
+        weatherInfo.addCond(16, Color.WHITE);
+        weatherInfo.setViewGravity(HeContent.GRAVITY_LEFT);
+        weatherInfo.show();
+        weatherInfo.setOnClickListener(this);
     }
 
 //    private void drawFloatButton() {
@@ -195,7 +269,25 @@ public class ShowDataFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         switch (v.getId()){
-
+            case R.id.heweather_plugin_main_view:
+                Intent intent = new Intent(getActivity(), WeatherH5Activity.class);
+                startActivity(intent);
+                break;
+            case R.id.home_page_admin_map:
+                Intent intent1 = new Intent(getActivity(), HomePageMapActivity.class);
+                startActivity(intent1);
+                break;
+            case R.id.home_page_admin_weather:
+                Intent intent2 = new Intent(getActivity(),WeatherH5Activity.class);
+                startActivity(intent2);
+                break;
+            case R.id.home_page_admin_ticket:
+                Intent intent3 = new Intent(getActivity(), HomePageTicketActivity.class);
+                startActivity(intent3);
+                break;
+            case R.id.home_page_admin_rule:
+                Intent intent4 = new Intent(getActivity(), HomePageRuleActivity.class);
+                startActivity(intent4);
             default:
                 break;
         }
