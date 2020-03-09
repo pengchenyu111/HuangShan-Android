@@ -2,13 +2,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/admin_tab_showdata"
-        android:icon="@mipmap/chart_normal"
-        android:title="数据" />
+        android:icon="@mipmap/home_page_admin"
+        android:title="首页" />
 
     <item
         android:id="@+id/admin_tab_predict"
         android:icon="@mipmap/predict_normal"
-        android:title="预测" />
+        android:title="客流" />
 
     <item
         android:id="@+id/admin_tab_notification"

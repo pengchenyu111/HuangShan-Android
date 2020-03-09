@@ -1,25 +1,21 @@
-package com.example.huangshan.admin.bean;
+package com.example.huangshan.admin.bean.table;
 
 import com.bin.david.form.annotation.SmartColumn;
 import com.bin.david.form.annotation.SmartTable;
 
-@SmartTable(name = "优待政策")
-public class TicketDiscount {
-
-    @SmartColumn(id = 0, name = "人群",autoMerge = true)
+@SmartTable(name = "票价")
+public class TicketPrice {
+    @SmartColumn(id = 0, name = "类型",autoMerge = true)
     private String peopleType;
-    @SmartColumn(id = 1, name = "适用条件")
+    @SmartColumn(id = 1, name = "条件")
     private String explanation;
-    @SmartColumn(id = 2, name = "折扣")
-    private String discount;
+    @SmartColumn(id = 2, name = "价格")
+    private String price;
 
-    public TicketDiscount() {
-    }
-
-    public TicketDiscount(String peopleType, String explanation, String discount) {
+    public TicketPrice(String peopleType, String explanation, String price) {
         this.peopleType = peopleType;
         this.explanation = explanation;
-        this.discount = discount;
+        this.price = price;
     }
 
     public String getPeopleType() {
@@ -38,11 +34,11 @@ public class TicketDiscount {
         this.explanation = explanation;
     }
 
-    public String getDiscount() {
-        return discount;
+    public String getPrice() {
+        return price;
     }
 
-    public void setDiscount(String discount) {
-        this.discount = discount;
+    public void setPrice(String price) {
+        this.price = price;
     }
 }
