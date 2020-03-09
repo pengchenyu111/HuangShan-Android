@@ -39,6 +39,9 @@
         <activity android:name=".admin.activity.HomePageMapActivity"/>
         <activity android:name=".admin.activity.HomePageTicketActivity"/>
         <activity android:name=".admin.activity.HomePageRuleActivity"/>
+        <activity android:name=".admin.activity.HomePageCampActivity"/>
+        <activity android:name=".admin.activity.HomePageCablewayActivity"/>
+        <activity android:name=".admin.activity.HomePageChangeCarActivity"/>
         <activity
             android:name=".common.ui.SplashActivity"
             android:theme="@style/SplashActivityTheme">

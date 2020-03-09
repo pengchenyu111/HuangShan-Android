@@ -21,21 +21,21 @@
           android:layout_height="320dp"
           android:background="@mipmap/flower">
 
-        <com.heweather.plugin.view.HorizonView
+            <com.heweather.plugin.view.HorizonView
             android:id="@+id/heweather_plugin_main_view"
             android:layout_width="150dp"
             android:layout_height="80dp"
             android:layout_marginTop="40dp"
             android:layout_marginLeft="20dp"/>
 
-        <TextView
+            <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:textSize="30sp"
             android:textColor="@color/white"
             android:text="此刻，黄山最美"/>
-        <TextView
+            <TextView
             android:id="@+id/home_page_admin_poetry"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
             android:textColor="@color/white"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="8dp"/>
-          <LinearLayout
+            <LinearLayout
               android:orientation="horizontal"
               android:layout_width="match_parent"
               android:layout_height="match_parent"
@@ -139,7 +139,7 @@
                       android:layout_marginTop="10dp"/>
               </LinearLayout>
           </LinearLayout>
-      </LinearLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -153,6 +153,111 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
             </com.youth.banner.Banner>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="游客服务"
+                android:textSize="20sp"
+                android:textColor="@color/blank" />
+            
+            <LinearLayout
+                android:id="@+id/home_page_admin_camp"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:background="@mipmap/camp"
+                android:gravity="bottom">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="露营管理"
+                    android:textSize="25sp"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="20dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="日升日落，云起云涌"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="25dp"
+                    android:layout_marginLeft="20dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="交通服务"
+                android:textSize="20sp"
+                android:textColor="@color/blank" />
+
+            <LinearLayout
+                android:id="@+id/home_page_admin_cableway"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:background="@mipmap/cableway"
+                android:gravity="bottom">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="缆车索道"
+                    android:textSize="25sp"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="20dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="游览的绝佳方式"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="25dp"
+                    android:layout_marginLeft="20dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/home_page_admin_change_car"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="220dp"
+                android:background="@mipmap/change_car"
+                android:gravity="bottom">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="班车换乘"
+                    android:textSize="25sp"
+                    android:textColor="@color/white"
+                    android:layout_marginLeft="20dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="游览更加轻松"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="25dp"
+                    android:layout_marginLeft="20dp"/>
+            </LinearLayout>
         </LinearLayout>
 
 

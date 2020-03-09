@@ -1,16 +1,12 @@
 package com.example.huangshan.admin.activity;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import androidx.core.content.ContextCompat;
-
 import com.bin.david.form.core.SmartTable;
-import com.bin.david.form.data.style.FontStyle;
 import com.example.huangshan.R;
-import com.example.huangshan.admin.bean.TicketDiscount;
+import com.example.huangshan.admin.bean.table.TicketDiscount;
 import com.example.huangshan.common.base.BaseActivity;
 
 import java.util.ArrayList;

@@ -17,6 +17,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.huangshan.R;
+import com.example.huangshan.admin.activity.HomePageCablewayActivity;
+import com.example.huangshan.admin.activity.HomePageCampActivity;
+import com.example.huangshan.admin.activity.HomePageChangeCarActivity;
 import com.example.huangshan.admin.activity.HomePageMapActivity;
 import com.example.huangshan.admin.activity.HomePageRuleActivity;
 import com.example.huangshan.admin.activity.HomePageTicketActivity;
@@ -59,6 +62,9 @@ public class ShowDataFragment extends Fragment implements View.OnClickListener{
     @BindView(R.id.home_page_admin_weather) ImageButton weatherBtn;
     @BindView(R.id.home_page_admin_ticket) ImageButton ticketBtn;
     @BindView(R.id.home_page_admin_rule) ImageButton ruleBtn;
+    @BindView(R.id.home_page_admin_camp) LinearLayout campView;
+    @BindView(R.id.home_page_admin_cableway) LinearLayout cablewayView;
+    @BindView(R.id.home_page_admin_change_car) LinearLayout changeCarView;
 
     private static final String TAG = "ShowDataFragment";
     //网络
@@ -105,6 +111,9 @@ public class ShowDataFragment extends Fragment implements View.OnClickListener{
         weatherBtn.setOnClickListener(this);
         ticketBtn.setOnClickListener(this);
         ruleBtn.setOnClickListener(this);
+        campView.setOnClickListener(this);
+        cablewayView.setOnClickListener(this);
+        changeCarView.setOnClickListener(this);
         //状态栏透明
         StatusBarUtil.transparentAndDark(getActivity());
         //显示天气
@@ -288,6 +297,18 @@ public class ShowDataFragment extends Fragment implements View.OnClickListener{
             case R.id.home_page_admin_rule:
                 Intent intent4 = new Intent(getActivity(), HomePageRuleActivity.class);
                 startActivity(intent4);
+            case R.id.home_page_admin_camp:
+                Intent intent5 = new Intent(getActivity(), HomePageCampActivity.class);
+                startActivity(intent5);
+                break;
+            case R.id.home_page_admin_cableway:
+                Intent intent6 = new Intent(getActivity(), HomePageCablewayActivity.class);
+                startActivity(intent6);
+                break;
+            case R.id.home_page_admin_change_car:
+                Intent intent7 = new Intent(getActivity(), HomePageChangeCarActivity.class);
+                startActivity(intent7);
+                break;
             default:
                 break;
         }
