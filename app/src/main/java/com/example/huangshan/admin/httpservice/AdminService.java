@@ -26,4 +26,9 @@ public interface AdminService {
     //更换个人简介
     @PUT("admins/introductions/{account}")
     Observable<ResultObj> changeIntroductions(@Path("account") String account, @Body RequestBody body);
+
+    //修改密码
+    @PUT("admins/passwords/{id}")
+    Observable<ResultObj> changePassword(@Path("id") long id, @Body RequestBody body);
+
 }

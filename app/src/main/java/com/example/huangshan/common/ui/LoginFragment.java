@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -27,6 +28,7 @@ import com.example.huangshan.http.ResultObj;
 import com.example.huangshan.http.RetrofitManager;
 import com.example.huangshan.http.RxSchedulers;
 import com.example.huangshan.R;
+import com.example.huangshan.tourist.ui.activity.TouristRegisterActivity;
 import com.google.gson.Gson;
 
 import java.util.LinkedHashMap;
@@ -53,6 +55,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
     @BindView(R.id.login_btn) Button loginBtn;
     @BindView(R.id.login_back) ImageView loginBack;
     @BindView(R.id.login_pwd_visible) ImageView pwdVisible;
+    @BindView(R.id.login_register) TextView touristRegisterBtn;
 
     private static final String TAG = "LoginFragment";
     private View view;
@@ -77,6 +80,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
         loginBtn.setOnClickListener(this::onClick);
         pwdVisible.setOnClickListener(this::onClick);
         loginBack.setOnClickListener(this::onClick);
+        touristRegisterBtn.setOnClickListener(this::onClick);
 
         return view;
     }
@@ -247,7 +251,12 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
                 //fragmentManager.popBackStack();
                 ActivityCollector.finishAll();
                 break;
-                default:break;
+            case R.id.login_register:
+                Intent intent = new Intent(getActivity(), TouristRegisterActivity.class);
+                startActivity(intent);
+                break;
+                default:
+                    break;
         }
     }
 
