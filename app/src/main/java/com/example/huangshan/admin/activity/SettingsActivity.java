@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.example.huangshan.R;
 import com.example.huangshan.common.base.BaseActivity;
+import com.example.huangshan.common.ui.ChangePasswordActivity;
 import com.example.huangshan.common.ui.LoginActivity;
 
 import butterknife.BindView;
@@ -22,6 +24,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
 
     @BindView(R.id.setting_back_btn) ImageView back;
     @BindView(R.id.admin_exit) Button adminExit;//退出登录按钮
+    @BindView(R.id.setting_change_password_ll_root1) LinearLayout changePasswordRoot;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,7 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
         //设置响应
         back.setOnClickListener(this::onClick);
         adminExit.setOnClickListener(this::onClick);
+        changePasswordRoot.setOnClickListener(this::onClick);
 
     }
 
@@ -53,7 +57,12 @@ public class SettingsActivity extends BaseActivity implements View.OnClickListen
                 Intent intent = new Intent(this, LoginActivity.class);
                 startActivity(intent);
                 break;
-                default:break;
+            case R.id.setting_change_password_ll_root1:
+                Intent intent1 = new Intent(this, ChangePasswordActivity.class);
+                startActivity(intent1);
+                break;
+                default:
+                    break;
         }
     }
 }

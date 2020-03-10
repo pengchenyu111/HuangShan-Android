@@ -11,4 +11,6 @@ public class ResultCode {
     public  static final int TOURIST_LOGIN = 810;
     //账号或密码错误
     public static final int LOGIN_DATA_WRONG = 805;
+    public static final int VERIFICATION_CODE_OUT_DATE = 812;
+    public static final int VERIFICATION_CODE_WRONG = 813;
 }

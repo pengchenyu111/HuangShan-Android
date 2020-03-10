@@ -46,6 +46,7 @@ import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import de.hdodenhof.circleimageview.CircleImageView;
 import io.reactivex.functions.Consumer;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -64,7 +65,7 @@ import static android.content.Context.MODE_PRIVATE;
 public class AdminSelfInfoFragment extends Fragment implements View.OnClickListener{
 
 
-    @BindView(R.id.admin_self_info_headicon) ImageView headIconView;
+    @BindView(R.id.admin_self_info_headicon) CircleImageView headIconView;
     @BindView(R.id.admin_self_info_acount) TextView accountView;
     @BindView(R.id.admin_self_info_name) TextView nameView;
     @BindView(R.id.admin_self_info_sex) TextView sexView;

@@ -119,16 +119,16 @@
             android:layout_marginRight="23dp"
             android:orientation="horizontal">
 
-            <TextView
+<!--            <TextView
             android:id="@+id/login_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="15dp"
             android:text="快速注册"
-            android:textColor="@color/greens"/>
+            android:textColor="@color/greens"/>-->
 
             <TextView
-                android:id="@+id/login_find_pwd"
+                android:id="@+id/login_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
@@ -136,7 +136,7 @@
                 android:layout_alignParentTop="true"
                 android:gravity="right"
                 android:padding="15dp"
-                android:text="忘记密码?"
+                android:text="快速注册"
                 android:textColor="@color/greens"/>
 
         </RelativeLayout>
