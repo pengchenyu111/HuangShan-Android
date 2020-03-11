@@ -28,6 +28,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon,android:theme,android:allowBackup,android:label,android:supportsRtl">
+        <activity android:name=".tourist.ui.activity.TouristSelfInfoActivity"/>
+        <activity android:name=".tourist.ui.activity.DownloadActivity"/>
+        <activity android:name=".tourist.ui.activity.NotificationActivity"/>
+        <activity android:name=".tourist.ui.activity.TouristMainActivity"/>
         <activity android:name=".tourist.ui.activity.TouristRegisterActivity"/>
         <activity android:name=".common.ui.ChangePasswordActivity"/>
         <activity android:name=".admin.activity.ComplaintInfoActivity"/>
