@@ -19,6 +19,8 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
 import com.example.huangshan.R;
@@ -57,12 +59,14 @@ public class TouristSelfInfoFragment extends Fragment implements View.OnClickLis
     @BindView(R.id.tourist_self_info_acount) TextView accountView;
     @BindView(R.id.tourist_self_info_name) TextView nameView;
     @BindView(R.id.tourist_self_info_sex) TextView sexView;
+    @BindView(R.id.tourist_self_info_birth) TextView birthView;
     @BindView(R.id.tourist_self_info_age) TextView ageView;
     @BindView(R.id.tourist_self_info_phone) TextView phoneView;
 
     //按钮
     @BindView(R.id.tourist_self_info_back_btn) ImageView backBtn;
     @BindView(R.id.tourist_self_info_headicon_root1) LinearLayout headIconRoot;
+    @BindView(R.id.tourist_self_info_change_btn) TextView changeInfoBtn;
 
     private static final String TAG = "TouristSelfInfoFragment";
     //缓存
@@ -95,6 +99,7 @@ public class TouristSelfInfoFragment extends Fragment implements View.OnClickLis
 
         backBtn.setOnClickListener(this::onClick);
         headIconRoot.setOnClickListener(this::onClick);
+        changeInfoBtn.setOnClickListener(this);
 
         setAdminBaseData();
 
@@ -111,6 +116,7 @@ public class TouristSelfInfoFragment extends Fragment implements View.OnClickLis
         String account = (String)preferences.getString("account",null);
         String name = (String) preferences.getString("name",null);
         String sex = (String)preferences.getString("sex",null);
+        String birth = (String) preferences.getString("birth","暂未设置");
         int age = (int) preferences.getInt("age",0);
         String phone = (String)preferences.getString("phone",null);
 
@@ -119,6 +125,7 @@ public class TouristSelfInfoFragment extends Fragment implements View.OnClickLis
         accountView.setText(account);
         nameView.setText(name);
         sexView.setText(sex);
+        birthView.setText(birth);
         ageView.setText(String.valueOf(age));
         phoneView.setText(phone);
 
@@ -245,6 +252,16 @@ public class TouristSelfInfoFragment extends Fragment implements View.OnClickLis
                 });
     }
 
+    private void changeInfo() {
+        FragmentManager manager = getFragmentManager();
+        FragmentTransaction transaction = manager.beginTransaction();
+        transaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE);
+        ChangeTouristInfoFragment fragment = new ChangeTouristInfoFragment();
+        transaction.replace(R.id.tourist_self_info_container,fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
+    }
+
     @Override
     public void onClick(View v) {
         switch (v.getId()){
@@ -254,8 +271,18 @@ public class TouristSelfInfoFragment extends Fragment implements View.OnClickLis
             case R.id.tourist_self_info_headicon_root1:
                 showImg();
                 break;
+            case R.id.tourist_self_info_change_btn:
+                changeInfo();
+                break;
                 default:
                     break;
         }
+    }
+
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setAdminBaseData();
     }
 }
