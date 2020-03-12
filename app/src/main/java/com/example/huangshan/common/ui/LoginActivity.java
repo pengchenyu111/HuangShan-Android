@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.huangshan.admin.activity.AdminMainActivity;
 import com.example.huangshan.common.base.ActivityCollector;
 import com.example.huangshan.common.base.BaseActivity;
+import com.example.huangshan.tourist.ui.activity.TouristMainActivity;
 import com.example.huangshan.view.CustomVideoView;
 import com.example.huangshan.R;
 
@@ -56,11 +57,11 @@ public class LoginActivity extends BaseActivity {
         //若是缓存中有之前用户登录的信息，则不用加载Fragment去网络请求，直接拿出缓存中的数据就行了
         //这时候就不会经过Login界面，而是直接进入Main界面
         if (role != null && role.equals("admin")){
-            Log.d(TAG,"进入管理员界面");
             Intent intent = new Intent(this, AdminMainActivity.class);
             startActivity(intent);
         } else if (role != null && role.equals("tourist")){
-            Log.d(TAG,"进入游客界面");
+            Intent intent = new Intent(this, TouristMainActivity.class);
+            startActivity(intent);
         } else{
             //缓存中没有用户信息，那就要执行登录界面了
             FragmentManager fragmentManager = getSupportFragmentManager();

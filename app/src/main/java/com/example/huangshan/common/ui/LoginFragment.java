@@ -28,6 +28,7 @@ import com.example.huangshan.http.ResultObj;
 import com.example.huangshan.http.RetrofitManager;
 import com.example.huangshan.http.RxSchedulers;
 import com.example.huangshan.R;
+import com.example.huangshan.tourist.ui.activity.TouristMainActivity;
 import com.example.huangshan.tourist.ui.activity.TouristRegisterActivity;
 import com.google.gson.Gson;
 
@@ -153,6 +154,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
                                            //写入缓存
                                            touristSharePreferences(tourist);
                                            //登录
+                                           Intent intent = new Intent(getActivity(), TouristMainActivity.class);
+                                           startActivity(intent);
                                            Toast.makeText(getActivity(),"游客您好，欢迎登录！",Toast.LENGTH_SHORT).show();
                                        }
                                    }
@@ -160,6 +163,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
                            }, new Consumer<Throwable>() {
                                @Override
                                public void accept(Throwable throwable) throws Exception {
+                                   pDialog.dismissWithAnimation();
                                    Log.d(TAG,throwable.getMessage());
                                }
                            }
