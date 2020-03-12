@@ -17,10 +17,14 @@ import androidx.fragment.app.Fragment;
 import com.bumptech.glide.Glide;
 import com.example.huangshan.R;
 import com.example.huangshan.admin.activity.AboutActivity;
+import com.example.huangshan.common.ui.SystemSettingsActivity;
 import com.example.huangshan.http.RetrofitManager;
+import com.example.huangshan.tourist.ui.activity.AccountSafeActivity;
 import com.example.huangshan.tourist.ui.activity.DownloadActivity;
 import com.example.huangshan.tourist.ui.activity.NotificationActivity;
+import com.example.huangshan.tourist.ui.activity.TouristHelpActivity;
 import com.example.huangshan.tourist.ui.activity.TouristSelfInfoActivity;
+import com.example.huangshan.utils.StatusBarUtil;
 import com.google.gson.Gson;
 
 import butterknife.BindView;
@@ -76,7 +80,7 @@ public class MeFragment extends Fragment implements View.OnClickListener{
         ButterKnife.bind(this,view);
         //设置响应
         addClick();
-
+        StatusBarUtil.transparentAndDark(getActivity());
         showHeadIcon();
 
         return view;
@@ -126,14 +130,20 @@ public class MeFragment extends Fragment implements View.OnClickListener{
                 startActivity(intent);
                 break;
             case R.id.tourist_me_account_safe_ll_root:
+                intent = new Intent(getActivity(), AccountSafeActivity.class);
+                startActivity(intent);
                 break;
             case R.id.tourist_me_setting_ll_root:
+                intent = new Intent(getActivity(), SystemSettingsActivity.class);
+                startActivity(intent);
                 break;
             case R.id.tourist_me_about_ll_root:
                 intent = new Intent(getActivity(), AboutActivity.class);
                 startActivity(intent);
                 break;
             case R.id.tourist_me_use_help_ll_root:
+                intent = new Intent(getActivity(), TouristHelpActivity.class);
+                startActivity(intent);
                 break;
             case R.id.tourist_me_feedback_ll_root:
                 break;

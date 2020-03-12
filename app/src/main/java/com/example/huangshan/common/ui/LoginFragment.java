@@ -163,6 +163,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
                            }, new Consumer<Throwable>() {
                                @Override
                                public void accept(Throwable throwable) throws Exception {
+                                   pDialog.dismissWithAnimation();
                                    Log.d(TAG,throwable.getMessage());
                                }
                            }
