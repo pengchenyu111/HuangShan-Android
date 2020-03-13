@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide;
 import com.example.huangshan.R;
 import com.example.huangshan.admin.activity.AboutActivity;
 import com.example.huangshan.common.ui.SystemSettingsActivity;
+import com.example.huangshan.common.ui.UserSuggestionActivity;
 import com.example.huangshan.http.RetrofitManager;
 import com.example.huangshan.tourist.ui.activity.AccountSafeActivity;
 import com.example.huangshan.tourist.ui.activity.DownloadActivity;
@@ -146,6 +147,8 @@ public class MeFragment extends Fragment implements View.OnClickListener{
                 startActivity(intent);
                 break;
             case R.id.tourist_me_feedback_ll_root:
+                intent = new Intent(getActivity(), UserSuggestionActivity.class);
+                startActivity(intent);
                 break;
                 default:
                     break;

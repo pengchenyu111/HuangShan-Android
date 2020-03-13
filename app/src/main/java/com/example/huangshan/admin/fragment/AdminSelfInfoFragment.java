@@ -29,7 +29,7 @@ import com.example.huangshan.admin.adapter.OnesScenicManageAdapter;
 import com.example.huangshan.admin.bean.AdminScenicManage;
 import com.example.huangshan.admin.httpservice.AdminService;
 import com.example.huangshan.admin.httpservice.ScenicManageService;
-import com.example.huangshan.common.service.FileService;
+import com.example.huangshan.common.httpservice.FileService;
 import com.example.huangshan.constans.ResultCode;
 import com.example.huangshan.http.ResultObj;
 import com.example.huangshan.http.RetrofitManager;

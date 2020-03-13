@@ -21,7 +21,7 @@ import androidx.fragment.app.Fragment;
 import com.example.huangshan.admin.activity.AdminMainActivity;
 import com.example.huangshan.admin.bean.Tourist;
 import com.example.huangshan.admin.bean.Admin;
-import com.example.huangshan.common.service.LoginService;
+import com.example.huangshan.common.httpservice.LoginService;
 import com.example.huangshan.common.base.ActivityCollector;
 import com.example.huangshan.constans.ResultCode;
 import com.example.huangshan.http.ResultObj;

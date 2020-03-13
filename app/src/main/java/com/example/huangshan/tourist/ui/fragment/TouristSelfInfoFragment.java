@@ -24,8 +24,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
 import com.example.huangshan.R;
-import com.example.huangshan.admin.httpservice.AdminService;
-import com.example.huangshan.common.service.FileService;
+import com.example.huangshan.common.httpservice.FileService;
 import com.example.huangshan.constans.ResultCode;
 import com.example.huangshan.http.ResultObj;
 import com.example.huangshan.http.RetrofitManager;

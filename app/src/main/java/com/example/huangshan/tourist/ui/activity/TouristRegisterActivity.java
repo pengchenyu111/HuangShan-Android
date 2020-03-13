@@ -2,7 +2,6 @@ package com.example.huangshan.tourist.ui.activity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -15,8 +14,7 @@ import android.widget.Toast;
 
 import com.example.huangshan.R;
 import com.example.huangshan.common.base.BaseActivity;
-import com.example.huangshan.common.service.VerificationCodeService;
-import com.example.huangshan.common.ui.ChangePasswordActivity;
+import com.example.huangshan.common.httpservice.VerificationCodeService;
 import com.example.huangshan.common.ui.LoginActivity;
 import com.example.huangshan.constans.ResultCode;
 import com.example.huangshan.http.ResultObj;
