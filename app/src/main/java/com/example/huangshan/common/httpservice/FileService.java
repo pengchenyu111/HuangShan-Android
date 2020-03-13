@@ -1,4 +1,4 @@
-package com.example.huangshan.common.service;
+package com.example.huangshan.common.httpservice;
 
 import com.example.huangshan.http.UploadFileResponse;
 
