@@ -11,4 +11,7 @@ public interface FileService {
 
     @POST("uploadFileByAccount")
     Observable<UploadFileResponse> upload(@Body RequestBody body);
+
+    @POST("uploadComplaintEvidence")
+    Observable<UploadFileResponse> uploadComplaintEvidence(@Body RequestBody body);
 }

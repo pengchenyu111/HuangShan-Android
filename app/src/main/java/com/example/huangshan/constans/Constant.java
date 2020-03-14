@@ -20,6 +20,20 @@ public class Constant {
         "http://101.37.173.73:8000/banner/admin/banner5.jpg"
     };
 
+    public static final String[] TOURIST_AD_BANNER_URL = {
+            "http://101.37.173.73:8000/banner/tourist/ad/banner1.jpg",
+            "http://101.37.173.73:8000/banner/tourist/ad/banner2.jpg",
+            "http://101.37.173.73:8000/banner/tourist/ad/banner3.jpg",
+            "http://101.37.173.73:8000/banner/tourist/ad/banner4.jpg",
+            "http://101.37.173.73:8000/banner/tourist/ad/banner5.jpg"
+    };
+
+    public static final String[] TOURIST_SERVE_BANNER_URL = {
+            "http://101.37.173.73:8000/banner/tourist/serve/banner1.jpg",
+            "http://101.37.173.73:8000/banner/tourist/serve/banner2.jpg",
+            "http://101.37.173.73:8000/banner/tourist/serve/banner3.jpg"
+    };
+
     //必应每日一图，用来当天气的背景
     public static final String BING_PIC = "http://guolin.tech/api/bing_pic";
 
