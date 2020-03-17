@@ -19,6 +19,7 @@ import com.example.huangshan.constans.Constant;
 import com.example.huangshan.tourist.ui.activity.ServeComplaintActivity;
 import com.example.huangshan.tourist.ui.activity.ServePredictActivity;
 import com.example.huangshan.tourist.ui.activity.ServeTicketActivity;
+import com.example.huangshan.tourist.ui.activity.ServeWCActivity;
 import com.example.huangshan.utils.GlideImageLoader;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -117,6 +118,8 @@ public class ServeFragment extends Fragment  implements View.OnClickListener{
                 startActivity(intent);
                 break;
             case R.id.serve_wc:
+                intent = new Intent(getActivity(), ServeWCActivity.class);
+                startActivity(intent);
                 break;
                 default:
                     break;
