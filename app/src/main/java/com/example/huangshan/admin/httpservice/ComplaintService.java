@@ -7,6 +7,7 @@ import io.reactivex.Observable;
 import okhttp3.RequestBody;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
@@ -34,5 +35,9 @@ public interface ComplaintService {
     //处理一条反馈
     @PUT("complaints/handles/{id}")
     Observable<ResultObj> handleOne(@Path("id") long id, @Body RequestBody requestBody);
+
+    //增加一条投诉
+    @POST("complaints")
+    Observable<ResultObj> addleOne(@Body RequestBody requestBody);
 
 }
