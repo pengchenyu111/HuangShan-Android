@@ -16,11 +16,12 @@ public class DailyNum implements Serializable {
     private String weatherName;
     private String moduleName;
     private String description;
+    private String isHoliday;
 
     public DailyNum() {
     }
 
-    public DailyNum(String dateName, String dateWeek, int predictNum, int todayEightNum, int todayNineNum, int todayTotalNum, double deviationRate, int orderNum, String weatherName, String moduleName, String description) {
+    public DailyNum(String dateName, String dateWeek, int predictNum, int todayEightNum, int todayNineNum, int todayTotalNum, double deviationRate, int orderNum, String weatherName, String moduleName, String description, String isHoliday) {
         this.dateName = dateName;
         this.dateWeek = dateWeek;
         this.predictNum = predictNum;
@@ -32,6 +33,7 @@ public class DailyNum implements Serializable {
         this.weatherName = weatherName;
         this.moduleName = moduleName;
         this.description = description;
+        this.isHoliday = isHoliday;
     }
 
     public String getDateName() {
@@ -122,6 +124,14 @@ public class DailyNum implements Serializable {
         this.description = description;
     }
 
+    public String getIsHoliday() {
+        return isHoliday;
+    }
+
+    public void setIsHoliday(String isHoliday) {
+        this.isHoliday = isHoliday;
+    }
+
     @Override
     public String toString() {
         return "DailyNum{" +
@@ -136,6 +146,7 @@ public class DailyNum implements Serializable {
                 ", weatherName='" + weatherName + '\'' +
                 ", moduleName='" + moduleName + '\'' +
                 ", description='" + description + '\'' +
+                ", isHoliday='" + isHoliday + '\'' +
                 '}';
     }
 }
