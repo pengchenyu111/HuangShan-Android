@@ -6,7 +6,7 @@ package com.example.huangshan.constans;
 public class Constant {
 
     //服务器的IP地址
-    public static final String URL = "http://192.168.43.232:8090/";
+    public static final String URL = "http://192.168.43.109:8090/";
 
     //服务器保存用户头像的地址 todo 要修改
     public static final String URL_HEADICONS = "http://192.168.43.232:8080/HuangShan/UserHeadIcons/";

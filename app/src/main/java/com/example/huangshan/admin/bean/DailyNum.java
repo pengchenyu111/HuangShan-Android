@@ -17,11 +17,13 @@ public class DailyNum implements Serializable {
     private String moduleName;
     private String description;
     private String isHoliday;
+    private String holidayName;
+    private int holidayOrder;
 
     public DailyNum() {
     }
 
-    public DailyNum(String dateName, String dateWeek, int predictNum, int todayEightNum, int todayNineNum, int todayTotalNum, double deviationRate, int orderNum, String weatherName, String moduleName, String description, String isHoliday) {
+    public DailyNum(String dateName, String dateWeek, int predictNum, int todayEightNum, int todayNineNum, int todayTotalNum, double deviationRate, int orderNum, String weatherName, String moduleName, String description, String isHoliday, String holidayName, int holidayOrder) {
         this.dateName = dateName;
         this.dateWeek = dateWeek;
         this.predictNum = predictNum;
@@ -34,6 +36,8 @@ public class DailyNum implements Serializable {
         this.moduleName = moduleName;
         this.description = description;
         this.isHoliday = isHoliday;
+        this.holidayName = holidayName;
+        this.holidayOrder = holidayOrder;
     }
 
     public String getDateName() {
@@ -132,6 +136,22 @@ public class DailyNum implements Serializable {
         this.isHoliday = isHoliday;
     }
 
+    public String getHolidayName() {
+        return holidayName;
+    }
+
+    public void setHolidayName(String holidayName) {
+        this.holidayName = holidayName;
+    }
+
+    public int getHolidayOrder() {
+        return holidayOrder;
+    }
+
+    public void setHolidayOrder(int holidayOrder) {
+        this.holidayOrder = holidayOrder;
+    }
+
     @Override
     public String toString() {
         return "DailyNum{" +
@@ -147,6 +167,8 @@ public class DailyNum implements Serializable {
                 ", moduleName='" + moduleName + '\'' +
                 ", description='" + description + '\'' +
                 ", isHoliday='" + isHoliday + '\'' +
+                ", holidayName='" + holidayName + '\'' +
+                ", holidayOrder=" + holidayOrder +
                 '}';
     }
 }
