@@ -18,6 +18,7 @@ import com.example.huangshan.admin.activity.WeatherH5Activity;
 import com.example.huangshan.constans.Constant;
 import com.example.huangshan.tourist.ui.activity.ServeComplaintActivity;
 import com.example.huangshan.tourist.ui.activity.ServePredictActivity;
+import com.example.huangshan.tourist.ui.activity.ServeScenicHotActivity;
 import com.example.huangshan.tourist.ui.activity.ServeTicketActivity;
 import com.example.huangshan.tourist.ui.activity.ServeWCActivity;
 import com.example.huangshan.utils.GlideImageLoader;
@@ -102,7 +103,8 @@ public class ServeFragment extends Fragment  implements View.OnClickListener{
                 Toast.makeText(getActivity(),"功能带开放，敬请期待！",Toast.LENGTH_SHORT).show();
                 break;
             case R.id.serve_hot_level:
-                Toast.makeText(getActivity(),"功能带开放，敬请期待！",Toast.LENGTH_SHORT).show();
+                intent = new Intent(getActivity(), ServeScenicHotActivity.class);
+                startActivity(intent);
                 break;
             case R.id.serve_hotel:
                 break;
