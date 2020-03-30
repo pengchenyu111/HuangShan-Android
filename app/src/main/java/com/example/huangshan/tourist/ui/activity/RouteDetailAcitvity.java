@@ -4,17 +4,17 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ImageView;
-import android.widget.ListView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.amap.api.maps.AMap;
 import com.amap.api.maps.AMapOptions;
@@ -39,6 +39,7 @@ import com.amap.api.services.route.WalkStep;
 import com.example.huangshan.R;
 import com.example.huangshan.common.base.BaseNaviActivity;
 import com.example.huangshan.constans.ErrorInfo;
+import com.example.huangshan.tourist.bean.StartAndEnd;
 import com.example.huangshan.tourist.ui.adapter.RouteDetailAdapter;
 import com.example.huangshan.utils.AmapUtil;
 import com.example.huangshan.view.ScrollListView;
@@ -58,14 +59,19 @@ public class RouteDetailAcitvity extends BaseNaviActivity implements View.OnClic
     @BindView(R.id.route_detail_list) ScrollListView routeListView;
 
     private static final String TAG = "RouteDetailAcitvity";
+    //ui
+    private PopupWindow mPopupWindow;
     //所在地和目的地
     private double currentLatitude;
     private double currentLongitude;
     private double targetLatitude;
     private double targetLongitude;
+    private String targetAddressName;
     //路径规划
     private RouteSearch routeSearch;
     private List<LatLng> routePoints = new ArrayList<>();
+    private int distance;
+    private int costMinute;
     //地图
     private AMap aMap;
     private UiSettings uiSettings;
@@ -84,9 +90,8 @@ public class RouteDetailAcitvity extends BaseNaviActivity implements View.OnClic
         getStartAndEndData();
         initMapView();
         initRouteSearch();
-        startRouteSearch(new LatLonPoint(currentLatitude,currentLongitude), new LatLonPoint(30.474187, 103.479229));
-        // todo 由于距离过长先用近一点的
-        //startRouteSearch(new LatLonPoint(currentLatitude,currentLongitude), new LatLonPoint(targetLatitude,targetLongitude));
+        //startRouteSearch(new LatLonPoint(currentLatitude,currentLongitude), new LatLonPoint(30.474187, 103.479229));
+        startRouteSearch(new LatLonPoint(currentLatitude,currentLongitude), new LatLonPoint(targetLatitude,targetLongitude));
 
 
     }
@@ -94,11 +99,13 @@ public class RouteDetailAcitvity extends BaseNaviActivity implements View.OnClic
     private void getStartAndEndData() {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-        double[] startAndEndData = extras.getDoubleArray("navi_start_end");
-        currentLatitude = startAndEndData[0];
-        currentLongitude = startAndEndData[1];
-        targetLatitude = startAndEndData[2];
-        targetLongitude = startAndEndData[3];
+        StartAndEnd startAndEnd = (StartAndEnd) extras.getSerializable("navi_start_end");
+        currentLatitude = startAndEnd.getCurrentLatitude();
+        currentLongitude = startAndEnd.getCurrentLongitude();
+        targetLatitude = startAndEnd.getTargetLatitude();
+        targetLongitude = startAndEnd.getTargetLongitude();
+        targetAddressName = startAndEnd.getTargetAddressName();
+        Log.d(TAG, "=============>" + startAndEnd.toString());
     }
 
     @Override
@@ -114,6 +121,33 @@ public class RouteDetailAcitvity extends BaseNaviActivity implements View.OnClic
                 bundle.putDoubleArray("navi_start_end",data);
                 intent.putExtras(bundle);
                 startActivity(intent);
+                break;
+            case R.id.gaode_map_btn:
+                if (AmapUtil.isGdMapInstalled()) {
+                    AmapUtil.openGaoDeNavi(RouteDetailAcitvity.this, 0, 0, null, targetLatitude, targetLongitude, targetAddressName);
+                } else {
+                    //这里必须要写逻辑，不然如果手机没安装该应用，程序会闪退，这里可以实现下载安装该地图应用
+                    Toast.makeText(RouteDetailAcitvity.this, "尚未安装高德地图", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.baidu_map_btn:
+                if (AmapUtil.isBaiduMapInstalled()) {
+                    AmapUtil.openBaiDuNavi(RouteDetailAcitvity.this, 0, 0, null, targetLatitude, targetLongitude, targetAddressName);
+                } else {
+                    //这里必须要写逻辑，不然如果手机没安装该应用，程序会闪退，这里可以实现下载安装该地图应用
+                    Toast.makeText(RouteDetailAcitvity.this, "尚未安装百度地图", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.tengxun_map_btn:
+                if (AmapUtil.isTencentMapInstalled()) {
+                    AmapUtil.openTencentMap(RouteDetailAcitvity.this, 0, 0, null, targetLatitude, targetLongitude, targetAddressName);
+                } else {
+                    //这里必须要写逻辑，不然如果手机没安装该应用，程序会闪退，这里可以实现下载安装该地图应用
+                    Toast.makeText(RouteDetailAcitvity.this, "尚未安装腾讯地图", Toast.LENGTH_SHORT).show();
+                }
+                break;
+            case R.id.cancle_btn:
+                this.finish();
                 break;
                 default:
                     break;
@@ -153,9 +187,7 @@ public class RouteDetailAcitvity extends BaseNaviActivity implements View.OnClic
         markerOptions.setFlat(true);
         aMap.addMarker(markerOptions);
         MarkerOptions markerOptions2 = new MarkerOptions();
-        markerOptions2.position(AmapUtil.convertToLatLng(new LatLonPoint(30.474187, 103.479229)));
-        // TODO: 2020/3/17 先用近一点的
-        //markerOptions2.position(end);
+        markerOptions2.position(end);
         markerOptions2.title("目的地");
         markerOptions2.draggable(false);
         markerOptions2.icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource(getResources(),R.mipmap.navi_marker_end)));
@@ -195,6 +227,7 @@ public class RouteDetailAcitvity extends BaseNaviActivity implements View.OnClic
     @SuppressLint("WrongConstant")
     @Override
     public void onWalkRouteSearched(WalkRouteResult walkRouteResult, int i) {
+        Log.d(TAG, "cuowm:"+i);
         if (i == 1000){
             List<WalkPath> paths = walkRouteResult.getPaths();
             WalkPath path = paths.get(0);
@@ -205,20 +238,55 @@ public class RouteDetailAcitvity extends BaseNaviActivity implements View.OnClic
             }
             aMap.addPolyline(new PolylineOptions().addAll(routePoints).width(10).color(Color.argb(255, 1, 1, 1)));
             //显示花费时间和距离
-            int costMinute = (int) path.getDuration()/60;
-            int distance = (int) path.getDistance();
+            costMinute = (int) path.getDuration()/60;
+            distance = (int) path.getDistance();
             timeDistanceView.setText(costMinute + "分钟(" + distance + "米)");
 
             // 显示路径列表
             RouteDetailAdapter adapter = new RouteDetailAdapter(this,steps);
             routeListView.setAdapter(adapter);
         }else {
-            Toast.makeText(this, ErrorInfo.getError(i), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "距离过长，建议您使用其他地图应用获取更专业的体验！", Toast.LENGTH_SHORT).show();
+            showPopUpWindow();
+
         }
     }
 
     @Override
     public void onRideRouteSearched(RideRouteResult rideRouteResult, int i) {
+
+    }
+
+    /**
+     * 绘制弹出框
+     */
+    private void showPopUpWindow() {
+        // 绘制前先清除之前的popupwindow，否则内存泄漏
+        if (mPopupWindow != null){
+            mPopupWindow.dismiss();
+        }
+        //初始化PopUpWindow
+        View popupwindowView = LayoutInflater.from(RouteDetailAcitvity.this).inflate(R.layout.popup_map_app,null);
+        mPopupWindow = new PopupWindow(popupwindowView);
+        mPopupWindow.setWidth(WindowManager.LayoutParams.MATCH_PARENT);
+        mPopupWindow.setHeight(getWindowManager().getDefaultDisplay().getHeight() /4);
+        mPopupWindow.setFocusable(false);
+
+        //加到父布局中
+        View rootView = LayoutInflater.from(RouteDetailAcitvity.this).inflate(R.layout.activity_route_detail,null);
+        mPopupWindow.showAtLocation(rootView, Gravity.BOTTOM,0,0);
+
+        //获取PopUpWindow中的控件
+        LinearLayout gaodeMapBtn = (LinearLayout) popupwindowView.findViewById(R.id.gaode_map_btn);
+        LinearLayout baiduMapBtn = (LinearLayout)popupwindowView.findViewById(R.id.baidu_map_btn);
+        LinearLayout tengxunMapBtn = (LinearLayout)popupwindowView.findViewById(R.id.tengxun_map_btn);
+        LinearLayout cancleBtn = (LinearLayout)popupwindowView.findViewById(R.id.cancle_btn);
+
+        //设置响应
+        gaodeMapBtn.setOnClickListener(this::onClick);
+        baiduMapBtn.setOnClickListener(this::onClick);
+        tengxunMapBtn.setOnClickListener(this::onClick);
+        cancleBtn.setOnClickListener(this::onClick);
 
     }
 
@@ -239,6 +307,9 @@ public class RouteDetailAcitvity extends BaseNaviActivity implements View.OnClic
     protected void onDestroy() {
         super.onDestroy();
         mapView.onDestroy();
+        if (mPopupWindow != null){
+            mPopupWindow.dismiss();
+        }
     }
 
     @Override

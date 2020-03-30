@@ -28,6 +28,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon,android:theme,android:allowBackup,android:label,android:supportsRtl">
+        <activity android:name=".tourist.ui.activity.MapAllPOIActivity"/>
         <activity android:name=".tourist.ui.activity.ServeScenicHotActivity"/>
         <activity android:name=".tourist.ui.activity.StartNaviActivity"/>
         <activity android:name=".tourist.ui.activity.RouteDetailAcitvity"/>
