@@ -99,6 +99,8 @@ dependencies {
     implementation 'com.github.huangyanbin:SmartTable:2.0'
     // 滑动开关按钮
     implementation 'com.github.zcweng:switch-button:0.0.3@aar'
+    //视频播放控件
+    implementation 'com.shuyu:GSYVideoPlayer:7.1.3'
 
 
 }

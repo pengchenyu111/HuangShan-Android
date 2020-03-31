@@ -138,7 +138,7 @@
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="150dp"
+                android:layout_height="130dp"
                 android:orientation="horizontal"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
@@ -158,7 +158,7 @@
                         android:orientation="vertical"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:layout_marginLeft="20dp"
+                        android:layout_marginLeft="35dp"
                         android:layout_weight="3">
                         <TextView
                             android:layout_width="match_parent"
@@ -216,29 +216,30 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="游客服务"
+                    android:text="黄山速览"
                     android:textSize="20sp"
-                    android:textColor="@color/blank" />
+                    android:textColor="@color/deep_blank" />
 
                 <LinearLayout
+                    android:id="@+id/home_page_tourist_quick_video"
                     android:orientation="vertical"
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="220dp"
-                    android:background="@mipmap/camp"
+                    android:background="@mipmap/huangshan_video"
                     android:gravity="bottom">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="露营管理"
+                        android:text="一分钟带你领略黄山"
                         android:textSize="25sp"
                         android:textColor="@color/white"
                         android:layout_marginLeft="20dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="日升日落，云起云涌"
-                        android:textSize="20sp"
+                        android:text="快速发现黄山的自然风光、人文历史"
+                        android:textSize="16sp"
                         android:textColor="@color/white"
                         android:layout_marginBottom="25dp"
                         android:layout_marginLeft="20dp"/>

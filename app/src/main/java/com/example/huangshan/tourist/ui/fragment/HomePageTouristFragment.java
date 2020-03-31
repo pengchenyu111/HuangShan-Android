@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,6 +27,7 @@ import com.example.huangshan.constans.ResultCode;
 import com.example.huangshan.http.ResultObj;
 import com.example.huangshan.http.RetrofitManager;
 import com.example.huangshan.http.RxSchedulers;
+import com.example.huangshan.tourist.ui.activity.HomeQuickVideoActivity;
 import com.example.huangshan.tourist.ui.activity.MapAllPOIActivity;
 import com.example.huangshan.tourist.ui.activity.ServeScenicHotActivity;
 import com.example.huangshan.tourist.ui.activity.ServeTicketActivity;
@@ -53,6 +55,8 @@ public class HomePageTouristFragment extends Fragment implements View.OnClickLis
     @BindView(R.id.heweather_plugin_tourist) HorizonView weatherInfo;
     @BindView(R.id.home_page_tourist_predict_num) TextCircleView predictNumView;
     @BindView(R.id.home_page_tourist_predict_level) TextCircleView predictLevelView;
+
+    @BindView(R.id.home_page_tourist_quick_video) LinearLayout quickViewRoot;
 
     private static final String TAG = "HomePageTouristFragment";
     //网络
@@ -91,6 +95,7 @@ public class HomePageTouristFragment extends Fragment implements View.OnClickLis
         weatherBtn.setOnClickListener(this::onClick);
         ticketBtn.setOnClickListener(this::onClick);
         hotBtn.setOnClickListener(this::onClick);
+        quickViewRoot.setOnClickListener(this::onClick);
     }
 
     @Override
@@ -110,6 +115,10 @@ public class HomePageTouristFragment extends Fragment implements View.OnClickLis
                 break;
             case R.id.home_page_tourist_hot:
                 intent = new Intent(getActivity(), ServeScenicHotActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.home_page_tourist_quick_video:
+                intent = new Intent(getActivity(), HomeQuickVideoActivity.class);
                 startActivity(intent);
                 break;
                 default:
