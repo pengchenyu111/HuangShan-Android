@@ -17,6 +17,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.huangshan.R;
 import com.example.huangshan.admin.activity.WeatherH5Activity;
@@ -27,10 +29,12 @@ import com.example.huangshan.constans.ResultCode;
 import com.example.huangshan.http.ResultObj;
 import com.example.huangshan.http.RetrofitManager;
 import com.example.huangshan.http.RxSchedulers;
+import com.example.huangshan.tourist.ui.activity.GeographyHuangShanActivity;
 import com.example.huangshan.tourist.ui.activity.HomeQuickVideoActivity;
 import com.example.huangshan.tourist.ui.activity.MapAllPOIActivity;
 import com.example.huangshan.tourist.ui.activity.ServeScenicHotActivity;
 import com.example.huangshan.tourist.ui.activity.ServeTicketActivity;
+import com.example.huangshan.tourist.ui.adapter.ImpressionAdapter;
 import com.example.huangshan.utils.StatusBarUtil;
 import com.example.huangshan.view.TextCircleView;
 import com.google.gson.Gson;
@@ -57,6 +61,8 @@ public class HomePageTouristFragment extends Fragment implements View.OnClickLis
     @BindView(R.id.home_page_tourist_predict_level) TextCircleView predictLevelView;
 
     @BindView(R.id.home_page_tourist_quick_video) LinearLayout quickViewRoot;
+    @BindView(R.id.home_page_tourist_yinxiang_recy) RecyclerView impressionRecyclerView;
+    @BindView(R.id.home_page_tourist_nature) LinearLayout natureHuangShanRoot;
 
     private static final String TAG = "HomePageTouristFragment";
     //网络
@@ -87,8 +93,11 @@ public class HomePageTouristFragment extends Fragment implements View.OnClickLis
         showWeather();
         getTodayPredict();
 
+        showImpression();
+
         return view;
     }
+
 
     private void initClick() {
         mapViewBtn.setOnClickListener(this::onClick);
@@ -96,6 +105,7 @@ public class HomePageTouristFragment extends Fragment implements View.OnClickLis
         ticketBtn.setOnClickListener(this::onClick);
         hotBtn.setOnClickListener(this::onClick);
         quickViewRoot.setOnClickListener(this::onClick);
+        natureHuangShanRoot.setOnClickListener(this::onClick);
     }
 
     @Override
@@ -119,6 +129,10 @@ public class HomePageTouristFragment extends Fragment implements View.OnClickLis
                 break;
             case R.id.home_page_tourist_quick_video:
                 intent = new Intent(getActivity(), HomeQuickVideoActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.home_page_tourist_nature:
+                intent = new Intent(getActivity(), GeographyHuangShanActivity.class);
                 startActivity(intent);
                 break;
                 default:
@@ -210,5 +224,19 @@ public class HomePageTouristFragment extends Fragment implements View.OnClickLis
             predictLevelView.setTextColor(ContextCompat.getColor(getActivity(),R.color.red));
             predictNumView.setTextColor(ContextCompat.getColor(getActivity(),R.color.red));
         }
+    }
+
+    /**
+     * 展示黄山印像
+     */
+    private void showImpression() {
+        int[] imgId = {R.mipmap.huangshan_spring,R.mipmap.huangshan_impression_fivesheng, R.mipmap.huangshan_impression_techan, R.mipmap.huangshan_impression_xishu, R.mipmap.huangshan_impression_chuanshuo, R.mipmap.huangshan_impression_meishi};
+        String[] desStr = {"五绝", "五胜","特产","习俗","传说","美食"};
+        impressionRecyclerView.setHasFixedSize(true);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        impressionRecyclerView.setLayoutManager(layoutManager);
+        ImpressionAdapter adapter = new ImpressionAdapter(getActivity(),imgId, desStr);
+        impressionRecyclerView.setAdapter(adapter);
     }
 }

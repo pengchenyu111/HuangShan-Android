@@ -252,62 +252,59 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="30dp">
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="交通服务"
+                    android:text="黄山印像"
                     android:textSize="20sp"
-                    android:textColor="@color/blank" />
+                    android:textColor="@color/deep_blank" />
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/home_page_tourist_yinxiang_recy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="180dp"
+                    android:layout_marginTop="10dp"/>
+            </LinearLayout>
 
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="30dp">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="地理黄山"
+                    android:textSize="20sp"
+                    android:textColor="@color/deep_blank" />
                 <LinearLayout
+                    android:id="@+id/home_page_tourist_nature"
                     android:orientation="vertical"
                     android:layout_marginTop="10dp"
                     android:layout_width="match_parent"
                     android:layout_height="220dp"
-                    android:background="@mipmap/cableway"
+                    android:background="@mipmap/huangshan_dili"
                     android:gravity="bottom">
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="缆车索道"
+                        android:text="自然之美"
                         android:textSize="25sp"
                         android:textColor="@color/white"
                         android:layout_marginLeft="20dp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="游览的绝佳方式"
-                        android:textSize="20sp"
-                        android:textColor="@color/white"
-                        android:layout_marginBottom="25dp"
-                        android:layout_marginLeft="20dp"/>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_marginTop="20dp"
-                    android:layout_width="match_parent"
-                    android:layout_height="220dp"
-                    android:background="@mipmap/change_car"
-                    android:gravity="bottom">
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="班车换乘"
-                        android:textSize="25sp"
-                        android:textColor="@color/white"
-                        android:layout_marginLeft="20dp"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="游览更加轻松"
-                        android:textSize="20sp"
+                        android:text="感受大自然的鬼斧神工"
+                        android:textSize="16sp"
                         android:textColor="@color/white"
                         android:layout_marginBottom="25dp"
                         android:layout_marginLeft="20dp"/>
                 </LinearLayout>
             </LinearLayout>
+
 
 
         </LinearLayout>
