@@ -56,9 +56,8 @@ public class StartNaviActivity extends BaseNaviActivity {
     @Override
     public void onInitNaviSuccess() {
         super.onInitNaviSuccess();
-        //aMapNavi.calculateWalkRoute(new NaviLatLng(currentLatitude,currentLongitude), new NaviLatLng(targetLatitude,targetLongitude));
-        // TODO: 2020/3/17 距离太长  换天兴大道制药厂
-        aMapNavi.calculateWalkRoute(new NaviLatLng(currentLatitude,currentLongitude), new NaviLatLng(30.474187, 103.479229));
+        aMapNavi.calculateWalkRoute(new NaviLatLng(currentLatitude,currentLongitude), new NaviLatLng(targetLatitude,targetLongitude));
+        //aMapNavi.calculateWalkRoute(new NaviLatLng(currentLatitude,currentLongitude), new NaviLatLng(30.474187, 103.479229));
     }
 
     @Override

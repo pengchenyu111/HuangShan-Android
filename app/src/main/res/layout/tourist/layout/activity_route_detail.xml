@@ -63,7 +63,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="16sp"
                     android:textColor="@color/deep_blank"
-                    android:text="16分钟(500米)"/>
+                    android:text="0分钟(0米)"/>
 
                 <com.example.huangshan.view.ScrollListView
                     android:id="@+id/route_detail_list"

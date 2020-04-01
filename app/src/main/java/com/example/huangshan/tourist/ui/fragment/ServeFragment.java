@@ -16,6 +16,7 @@ import com.example.huangshan.R;
 import com.example.huangshan.admin.activity.NotificationUrgentActivity;
 import com.example.huangshan.admin.activity.WeatherH5Activity;
 import com.example.huangshan.constans.Constant;
+import com.example.huangshan.tourist.ui.activity.DeliciousActivity;
 import com.example.huangshan.tourist.ui.activity.ServeComplaintActivity;
 import com.example.huangshan.tourist.ui.activity.ServePredictActivity;
 import com.example.huangshan.tourist.ui.activity.ServeScenicHotActivity;
@@ -109,7 +110,8 @@ public class ServeFragment extends Fragment  implements View.OnClickListener{
             case R.id.serve_hotel:
                 break;
             case R.id.serve_delicacies:
-                Toast.makeText(getActivity(),"功能带开放，敬请期待！",Toast.LENGTH_SHORT).show();
+                intent = new Intent(getActivity(), DeliciousActivity.class);
+                startActivity(intent);
                 break;
             case R.id.serve_complaint:
                 intent = new Intent(getActivity(), ServeComplaintActivity.class);

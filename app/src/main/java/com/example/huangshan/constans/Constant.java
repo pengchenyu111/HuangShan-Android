@@ -86,4 +86,6 @@ public class Constant {
             "黄山向晚盈轩翠，黟水含春绕槛流"
     };
 
+    public static final String HUANGSHAN_VIDEO_URL = "http://101.37.173.73:8000/huangshan.mp4";
+
 }

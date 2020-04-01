@@ -47,6 +47,7 @@ import com.example.huangshan.R;
 import com.example.huangshan.common.base.BaseActivity;
 import com.example.huangshan.common.ui.LoginActivity;
 import com.example.huangshan.constans.Constant;
+import com.example.huangshan.tourist.bean.StartAndEnd;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -69,6 +70,8 @@ public class ServeWCActivity extends BaseActivity implements View.OnClickListene
     public AMapLocationClientOption mLocationOption = null;
     private double currentLatitude;
     private double currentLongitude;
+    private String currentAddressName;
+    private StartAndEnd startAndEnd;
     //地图
     private AMap aMap;
     private UiSettings uiSettings;
@@ -76,6 +79,7 @@ public class ServeWCActivity extends BaseActivity implements View.OnClickListene
     private PoiSearch poiSearch;
     private double targetWCLatitude;
     private double targetWCLongitude;
+    private String targetAdressName;
     //距离
     private DistanceSearch distanceSearch = null;
     private DistanceSearch.DistanceQuery distanceQuery = null;
@@ -92,10 +96,10 @@ public class ServeWCActivity extends BaseActivity implements View.OnClickListene
         goBtn.setOnClickListener(this::onClick);
 
         initLocation();
-        initMapView();
+        //initMapView();
         initDistance();
 
-        poiSearch("厕所","","");
+        //poiSearch("厕所","","");
     }
 
     @Override
@@ -107,8 +111,7 @@ public class ServeWCActivity extends BaseActivity implements View.OnClickListene
             case R.id.serve_wc_go:
                 Intent intent = new Intent(this, RouteDetailAcitvity.class);
                 Bundle bundle = new Bundle();
-                double[] data = {currentLatitude,currentLongitude,targetWCLatitude,targetWCLongitude};
-                bundle.putDoubleArray("navi_start_end",data);
+                bundle.putSerializable("navi_start_end", startAndEnd);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 break;
@@ -123,7 +126,11 @@ public class ServeWCActivity extends BaseActivity implements View.OnClickListene
         mLocationOption = new AMapLocationClientOption();
         mLocationOption.setLocationPurpose(AMapLocationClientOption.AMapLocationPurpose.Transport);
         mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Hight_Accuracy);
-        mLocationOption.setInterval(2000);
+        //单次定位
+        mLocationOption.setOnceLocation(true);
+        mLocationOption.setOnceLocationLatest(true);
+        //连续定位
+        //mLocationOption.setInterval(2000);
         mLocationOption.setNeedAddress(true);
         mLocationOption.setMockEnable(true);
         mLocationOption.setHttpTimeOut(20000);
@@ -143,7 +150,7 @@ public class ServeWCActivity extends BaseActivity implements View.OnClickListene
         //获得地图
         aMap = mapView.getMap();
         //转移镜头到黄山风景区
-        LatLng latLng = new LatLng(Constant.HUANGSHAN_LATITUDE,Constant.HUANGSHAN_LONGITITUDE);
+        LatLng latLng = new LatLng(currentLatitude,currentLongitude);
         aMap.moveCamera(CameraUpdateFactory.newCameraPosition(new CameraPosition(latLng,13,0,0)));
         //实例化 UiSettings 对象
         uiSettings = aMap.getUiSettings();
@@ -182,11 +189,12 @@ public class ServeWCActivity extends BaseActivity implements View.OnClickListene
      */
     private void poiSearch(String keyword,String poiCode,String cityCodeOrName) {
         query = new PoiSearch.Query(keyword,poiCode,cityCodeOrName);
-        query.setPageSize(20);
+        query.setPageSize(50);
         query.setPageNum(0);
         poiSearch = new PoiSearch(this, query);
+        Log.d(TAG, "======>"+currentLatitude+currentLongitude);
+        poiSearch.setBound(new PoiSearch.SearchBound(new LatLonPoint(currentLatitude, currentLongitude),15000,true));
         poiSearch.setOnPoiSearchListener(this);
-        poiSearch.setBound(new PoiSearch.SearchBound(new LatLonPoint(Constant.HUANGSHAN_LATITUDE, Constant.HUANGSHAN_LONGITITUDE),15000,true));
         poiSearch.searchPOIAsyn();
     }
 
@@ -210,6 +218,8 @@ public class ServeWCActivity extends BaseActivity implements View.OnClickListene
         getDistance(new LatLonPoint(currentLatitude,currentLongitude),end);
         targetWCLatitude = pois.get(0).getLatLonPoint().getLatitude();
         targetWCLongitude = pois.get(0).getLatLonPoint().getLongitude();
+        targetAdressName = pois.get(0).getTitle();
+        startAndEnd = new StartAndEnd(currentAddressName,currentLatitude,currentLongitude,targetAdressName,targetWCLatitude,targetWCLongitude);
     }
 
     /**
@@ -221,10 +231,12 @@ public class ServeWCActivity extends BaseActivity implements View.OnClickListene
     public boolean onMarkerClick(Marker marker) {
         targetWCLatitude = marker.getPosition().latitude;
         targetWCLongitude = marker.getPosition().longitude;
+        targetAdressName = marker.getTitle();
         spotView.setText(marker.getTitle());
 
         LatLonPoint start = new LatLonPoint(currentLatitude, currentLongitude);
         LatLonPoint end = new LatLonPoint(targetWCLatitude,targetWCLongitude);
+        startAndEnd = new StartAndEnd(currentAddressName, currentLatitude, currentLongitude,targetAdressName, targetWCLatitude, targetWCLongitude);
         //获取距离
         getDistance(start,end);
         return false;
@@ -270,6 +282,9 @@ public class ServeWCActivity extends BaseActivity implements View.OnClickListene
             if (aMapLocation.getErrorCode() == 0){
                 currentLatitude = aMapLocation.getLatitude();
                 currentLongitude = aMapLocation.getLongitude();
+                currentAddressName = aMapLocation.getAddress();
+                initMapView();
+                poiSearch("厕所","","");
             }else {
                 Log.d(TAG,"location Error, ErrCode:" + aMapLocation.getErrorCode() + ", errInfo:" + aMapLocation.getErrorInfo());
             }
