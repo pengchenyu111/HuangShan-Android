@@ -1,18 +1,22 @@
 package com.example.huangshan.tourist.ui.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.huangshan.R;
+import com.example.huangshan.tourist.ui.activity.FiveJueActivity;
+import com.example.huangshan.tourist.ui.activity.FiveShengActivity;
 
 import java.util.List;
 
@@ -55,7 +59,30 @@ public class ImpressionAdapter extends RecyclerView.Adapter<ImpressionAdapter.Im
         holder.impressionImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: 2020/3/31 影响待写
+                switch (position){
+                    case 0:
+                        Intent intent = new Intent(mContext, FiveJueActivity.class);
+                        mContext.startActivity(intent);
+                        break;
+                    case 1:
+                        intent = new Intent(mContext, FiveShengActivity.class);
+                        mContext.startActivity(intent);
+                        break;
+                    case 2:
+                        Toast.makeText(mContext,"2",Toast.LENGTH_SHORT).show();
+                        break;
+                    case 3:
+                        Toast.makeText(mContext,"3",Toast.LENGTH_SHORT).show();
+                        break;
+                    case 4:
+                        Toast.makeText(mContext,"4",Toast.LENGTH_SHORT).show();
+                        break;
+                    case 5:
+                        Toast.makeText(mContext,"5",Toast.LENGTH_SHORT).show();
+                        break;
+                        default:
+                            break;
+                }
             }
         });
     }
