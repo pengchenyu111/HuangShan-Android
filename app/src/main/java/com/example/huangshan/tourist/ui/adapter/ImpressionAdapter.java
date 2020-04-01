@@ -15,8 +15,12 @@ import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.huangshan.R;
+import com.example.huangshan.tourist.ui.activity.CustomActivity;
+import com.example.huangshan.tourist.ui.activity.DeliciousActivity;
 import com.example.huangshan.tourist.ui.activity.FiveJueActivity;
 import com.example.huangshan.tourist.ui.activity.FiveShengActivity;
+import com.example.huangshan.tourist.ui.activity.LegendActivity;
+import com.example.huangshan.tourist.ui.activity.SpecialtyActivity;
 
 import java.util.List;
 
@@ -69,16 +73,20 @@ public class ImpressionAdapter extends RecyclerView.Adapter<ImpressionAdapter.Im
                         mContext.startActivity(intent);
                         break;
                     case 2:
-                        Toast.makeText(mContext,"2",Toast.LENGTH_SHORT).show();
+                        intent = new Intent(mContext, SpecialtyActivity.class);
+                        mContext.startActivity(intent);
                         break;
                     case 3:
-                        Toast.makeText(mContext,"3",Toast.LENGTH_SHORT).show();
+                        intent = new Intent(mContext, CustomActivity.class);
+                        mContext.startActivity(intent);
                         break;
                     case 4:
-                        Toast.makeText(mContext,"4",Toast.LENGTH_SHORT).show();
+                        intent = new Intent(mContext, LegendActivity.class);
+                        mContext.startActivity(intent);
                         break;
                     case 5:
-                        Toast.makeText(mContext,"5",Toast.LENGTH_SHORT).show();
+                        intent = new Intent(mContext, DeliciousActivity.class);
+                        mContext.startActivity(intent);
                         break;
                         default:
                             break;
