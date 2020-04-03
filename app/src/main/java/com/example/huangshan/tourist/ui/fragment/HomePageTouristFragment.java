@@ -155,7 +155,7 @@ public class HomePageTouristFragment extends Fragment implements View.OnClickLis
         weatherInfo.setDefaultBack(false);
         //设置布局的背景圆角角度（单位：dp），颜色，边框宽度（单位：px），边框颜色
         weatherInfo.setStroke(10, Color.TRANSPARENT, 1, Color.TRANSPARENT);
-        weatherInfo.addWeatherIcon(80);
+        weatherInfo.addWeatherIcon(60);
         weatherInfo.addTemp(16, Color.BLACK);
         weatherInfo.addCond(16, Color.BLACK);
         weatherInfo.setViewGravity(HeContent.GRAVITY_LEFT);
