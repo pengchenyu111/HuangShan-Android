@@ -28,6 +28,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:icon,android:theme,android:allowBackup,android:label,android:supportsRtl">
+        <activity android:name=".tourist.ui.activity.HotelAlbumActivity"/>
+        <activity android:name=".tourist.ui.activity.ServeHotelInfoActivity"/>
+        <activity android:name=".tourist.ui.activity.ServeHotelActivity"/>
         <activity android:name=".tourist.ui.activity.ScenicAlbumActivity"/>
         <activity android:name=".tourist.ui.activity.ScenicLocationActivity"/>
         <activity android:name=".tourist.ui.activity.ScenicActivity"/>

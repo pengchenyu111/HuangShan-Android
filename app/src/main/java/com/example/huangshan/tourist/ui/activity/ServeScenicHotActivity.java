@@ -102,8 +102,6 @@ public class ServeScenicHotActivity extends BaseActivity implements View.OnClick
                 finish();
                 break;
             case R.id.hot_map_max_root:
-                // TODO：要跳转到一个景点界面
-                Toast.makeText(this,"TODO：要跳转到一个景点界面", Toast.LENGTH_SHORT).show();
                 break;
                 default:
                     break;

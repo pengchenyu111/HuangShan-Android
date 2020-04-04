@@ -18,6 +18,7 @@ import com.example.huangshan.admin.activity.WeatherH5Activity;
 import com.example.huangshan.constans.Constant;
 import com.example.huangshan.tourist.ui.activity.DeliciousActivity;
 import com.example.huangshan.tourist.ui.activity.ServeComplaintActivity;
+import com.example.huangshan.tourist.ui.activity.ServeHotelActivity;
 import com.example.huangshan.tourist.ui.activity.ServePredictActivity;
 import com.example.huangshan.tourist.ui.activity.ServeScenicHotActivity;
 import com.example.huangshan.tourist.ui.activity.ServeTicketActivity;
@@ -108,6 +109,8 @@ public class ServeFragment extends Fragment  implements View.OnClickListener{
                 startActivity(intent);
                 break;
             case R.id.serve_hotel:
+                intent = new Intent(getActivity(), ServeHotelActivity.class);
+                startActivity(intent);
                 break;
             case R.id.serve_delicacies:
                 intent = new Intent(getActivity(), DeliciousActivity.class);
