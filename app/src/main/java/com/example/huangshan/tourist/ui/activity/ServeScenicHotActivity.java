@@ -33,6 +33,7 @@ import com.example.huangshan.tourist.bean.Scenic;
 import com.example.huangshan.tourist.bean.ScenicHot;
 import com.example.huangshan.tourist.httpservice.ScenicHotService;
 import com.example.huangshan.tourist.httpservice.ScenicService;
+import com.example.huangshan.utils.StatusBarUtil;
 import com.example.huangshan.view.TextCircleView;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -74,8 +75,8 @@ public class ServeScenicHotActivity extends BaseActivity implements View.OnClick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_serve_scenic_hot);
-
         ButterKnife.bind(this);
+        StatusBarUtil.transparentAndDark(this);
         mapView.onCreate(savedInstanceState);
 
         backBtn.setOnClickListener(this);
@@ -101,8 +102,6 @@ public class ServeScenicHotActivity extends BaseActivity implements View.OnClick
                 finish();
                 break;
             case R.id.hot_map_max_root:
-                // TODO：要跳转到一个景点界面
-                Toast.makeText(this,"TODO：要跳转到一个景点界面", Toast.LENGTH_SHORT).show();
                 break;
                 default:
                     break;

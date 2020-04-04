@@ -354,7 +354,9 @@ public class MapAllPOIActivity extends BaseActivity implements View.OnClickListe
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mPopupWindow.dismiss();
+        if (mPopupWindow != null){
+            mPopupWindow.dismiss();
+        }
         mapView.onDestroy();
         mLocationClient.stopLocation();
     }

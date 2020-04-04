@@ -31,4 +31,5 @@
 
     <color name="light_green">#2BD52B</color>
     <color name="blue">#4c90f9</color>
+    <color name="transparent_white">#9AE2E2E2</color>
 </resources>

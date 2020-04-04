@@ -10,4 +10,10 @@ public interface ScenicService {
 
     @GET("scenics/{id}")
     Observable<ResultObj> getById(@Path("id") long id);
+
+    @GET("scenics/all")
+    Observable<ResultObj> getAll();
+
+    @GET("scenic_hot")
+    Observable<ResultObj> getAllHots();
 }
