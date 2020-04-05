@@ -52,8 +52,6 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    //    微信开发工具
-    implementation 'com.tencent.mm.opensdk:wechat-sdk-android-without-mta:5.4.3'
     //    JSON工具
     implementation 'com.google.code.gson:gson:2.8.6'
     //    网络通信工具
@@ -87,8 +85,6 @@ dependencies {
     implementation project(path: ':sweetalertlibrary')
     //MPAndroidharts 图表库
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
-    //浮动按钮 boommenubutton
-    implementation 'com.nightonke:boommenu:2.1.1'
     //轮播图 banner
     implementation 'com.youth.banner:banner:1.4.10'
     //下拉刷新https://github.com/Yalantis/Phoenix
